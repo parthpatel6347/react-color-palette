@@ -7,6 +7,16 @@
  text-transform: uppercase;
 }
 
+.ColorBox:first-child{
+border-top-left-radius: 13px ;
+border-bottom-left-radius: 13px;
+}
+
+.ColorBox:last-child{
+    border-top-right-radius: 13px ;
+    border-bottom-right-radius: 13px;
+    }
+
 .ColorBox-container{
     display:flex;
     flex-direction: column;

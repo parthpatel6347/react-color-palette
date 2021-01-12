@@ -22,7 +22,7 @@ class ColorBox extends Component {
       <div className="ColorBox" style={{ background }}>
         <div className="ColorBox-container">
           <span>{name}</span>
-          <CopyToClipboard text={background} onCopy={this.changeCopied}>
+          <CopyToClipboard text={name} onCopy={this.changeCopied}>
             <div>
               <div
                 className={`copied-overlay ${this.state.copied && "show"}`}
@@ -30,7 +30,7 @@ class ColorBox extends Component {
               />
               <div className={`copied-msg ${this.state.copied && "show"}`}>
                 <h1>Copied</h1>
-                <p>{background}</p>
+                <p>{name}</p>
               </div>
               <i className="fas fa-copy" data-tip data-for="copy"></i>
             </div>
