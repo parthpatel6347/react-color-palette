@@ -22,3 +22,9 @@
  width: 25%;
 }
 
+.header{
+    position: fixed;
+    display:inline;
+    left:0;
+    top:0;
+}

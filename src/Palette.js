@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
 import "./Palette.css";
+import { Link } from "react-router-dom";
 
 class Palette extends Component {
   constructor(props) {
@@ -56,6 +57,10 @@ class Palette extends Component {
     ));
     return (
       <div className="palette">
+        <Link to="/">
+          <h1 className="header">colorPalettes</h1>
+        </Link>
+
         <div className="palette-adjustments">
           <Typography id="continuous-slider" gutterBottom>
             Lightness
