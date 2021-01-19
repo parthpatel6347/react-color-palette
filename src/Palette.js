@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import ColorBox from "./ColorBox";
 import chroma from "chroma-js";
-// import Slider from "rc-slider";
-// import "rc-slider/assets/index.css";
-
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -34,8 +31,8 @@ class Palette extends Component {
 
   colorProcess(color) {
     return chroma(color)
-      .brighten(this.state.lightness / 100)
-      .saturate(this.state.saturation / 100)
+      .saturate(this.state.saturation / 25)
+      .brighten(this.state.lightness / 30)
       .hex();
   }
 
@@ -68,8 +65,8 @@ class Palette extends Component {
           <Slider
             value={this.state.lightness}
             onChange={this.changeLightness}
-            min={-400}
-            max={400}
+            min={-100}
+            max={100}
             aria-labelledby="continuous-slider"
           />
           <Typography id="continuous-slider" gutterBottom>
@@ -78,8 +75,8 @@ class Palette extends Component {
           <Slider
             value={this.state.saturation}
             onChange={this.changeSaturation}
-            min={-400}
-            max={400}
+            min={-100}
+            max={100}
             aria-labelledby="continuous-slider"
           />
 

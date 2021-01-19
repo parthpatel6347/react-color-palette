@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./ColorBox.css";
 import ReactTooltip from "react-tooltip";
+import chroma from "chroma-js";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 class ColorBox extends Component {
@@ -18,10 +19,11 @@ class ColorBox extends Component {
 
   render() {
     const { background, name } = this.props;
+    const isDark = chroma(background).luminance() <= 0.07;
     return (
       <div className="ColorBox" style={{ background }}>
         <div className="ColorBox-container">
-          <span>{name}</span>
+          <span className={isDark && "white-font"}>{name}</span>
           <CopyToClipboard text={name} onCopy={this.changeCopied}>
             <div>
               <div
@@ -29,10 +31,14 @@ class ColorBox extends Component {
                 style={{ background }}
               />
               <div className={`copied-msg ${this.state.copied && "show"}`}>
-                <h1>Copied</h1>
-                <p>{name}</p>
+                <h1 className={isDark && "white-font"}>Copied</h1>
+                <p className={isDark && "white-font"}>{name}</p>
               </div>
-              <i className="fas fa-copy" data-tip data-for="copy"></i>
+              <i
+                className={`fas fa-copy ${isDark && "white-font"}`}
+                data-tip
+                data-for="copy"
+              ></i>
             </div>
           </CopyToClipboard>
           <ReactTooltip
@@ -43,7 +49,11 @@ class ColorBox extends Component {
           >
             COPY
           </ReactTooltip>
-          <i className="fas fa-palette" data-tip data-for="more"></i>
+          <i
+            className={`fas fa-palette ${isDark && "white-font"}`}
+            data-tip
+            data-for="more"
+          ></i>
           <ReactTooltip
             className="tooltip"
             id="more"
