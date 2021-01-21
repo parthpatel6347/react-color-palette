@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { ChromePicker } from "react-color";
 import Button from "@material-ui/core/Button";
-import DraggableColor from "./DraggableColor";
 import { withStyles } from "@material-ui/core/styles";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import DraggableColorList from "./DraggableColorList";
+import { arrayMove } from "react-sortable-hoc";
 
 const styles = {
-  paletteContainer: {
-    display: "flex",
-    width: "70%",
-    height: "500px",
-  },
+  paletteContainer: {},
 };
 
 class NewPaletteForm extends Component {
@@ -25,6 +22,7 @@ class NewPaletteForm extends Component {
     this.addColor = this.addColor.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.removeColor = this.removeColor.bind(this);
   }
 
   componentDidMount() {
@@ -67,6 +65,12 @@ class NewPaletteForm extends Component {
     });
   }
 
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState(({ colors }) => ({
+      colors: arrayMove(colors, oldIndex, newIndex),
+    }));
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -103,12 +107,12 @@ class NewPaletteForm extends Component {
           </Button>
         </div>
         <div className={classes.paletteContainer}>
-          {this.state.colors.map((color) => (
-            <DraggableColor
-              color={color}
-              handleRemove={() => this.removeColor(color.color)}
-            />
-          ))}
+          <DraggableColorList
+            colors={this.state.colors}
+            removeColor={this.removeColor}
+            axis="x"
+            onSortEnd={this.onSortEnd}
+          />
         </div>
       </div>
     );
