@@ -3,12 +3,12 @@ export default [
     paletteName: "Material UI Colors",
     id: "material-ui-colors",
     colors: [
-      { name: "red", color: "#F44336" },
-      { name: "pink", color: "#E91E63" },
-      { name: "purple", color: "#9C27B0" },
-      { name: "deeppurple", color: "#673AB7" },
-      { name: "indigo", color: "#3F51B5" },
-      { name: "blue", color: "#2196F3" },
+      { color: "#F44336" },
+      { color: "#E91E63" },
+      { color: "#9C27B0" },
+      { color: "#673AB7" },
+      { color: "#3F51B5" },
+      { color: "#2196F3" },
     ],
   },
   {
