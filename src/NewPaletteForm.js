@@ -4,13 +4,19 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import DraggableColorList from "./DraggableColorList";
-import { arrayMove } from "react-sortable-hoc";
+import arrayMove from "array-move";
+import chroma from "chroma-js";
+import { Link } from "react-router-dom";
 
 const styles = {
   paletteContainer: {},
 };
 
 class NewPaletteForm extends Component {
+  static defaultProps = {
+    maxColors: 6,
+    minColors: 1,
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +29,8 @@ class NewPaletteForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.removeColor = this.removeColor.bind(this);
+    this.clearPalette = this.clearPalette.bind(this);
+    this.addRandColor = this.addRandColor.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +38,10 @@ class NewPaletteForm extends Component {
       this.props.palettes.every(
         ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
       )
+    );
+    ValidatorForm.addValidationRule(
+      "reqMinColor",
+      (value) => this.state.colors.length >= this.props.minColors
     );
   }
 
@@ -71,26 +83,54 @@ class NewPaletteForm extends Component {
     }));
   };
 
+  clearPalette() {
+    this.setState({ colors: [] });
+  }
+
+  addRandColor() {
+    const randColor = { color: chroma.random().hex() };
+    this.setState({ colors: [...this.state.colors, randColor] });
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, maxColors } = this.props;
+    const isPaletteFull = this.state.colors.length >= maxColors;
     return (
       <div>
         <ValidatorForm onSubmit={this.handleSubmit}>
           <TextValidator
             value={this.state.newPaletteName}
             onChange={this.handleChange}
-            validators={["required", "paletteNameUnique"]}
-            errorMessages={["Enter Palette Name", "Palette name already taken"]}
+            validators={["required", "paletteNameUnique", "reqMinColor"]}
+            errorMessages={[
+              "Enter Palette Name",
+              "Palette name already taken",
+              "Require atleast 1 color in palette",
+            ]}
           />
           <Button variant="contained" color="primary" type="submit">
             Save Palette
           </Button>
+          <Link to="/">
+            <Button variant="contained" color="secondary">
+              Go Back
+            </Button>
+          </Link>
         </ValidatorForm>
         <div>
-          <Button variant="outlined" color="primary">
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={this.addRandColor}
+            disabled={isPaletteFull}
+          >
             Random Color
           </Button>
-          <Button variant="outlined" color="secondary">
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={this.clearPalette}
+          >
             Clear Palette
           </Button>
           <ChromePicker
@@ -100,10 +140,13 @@ class NewPaletteForm extends Component {
           <Button
             variant="contained"
             color="primary"
-            style={{ backgroundColor: this.state.currentColor }}
+            style={{
+              backgroundColor: isPaletteFull ? "" : this.state.currentColor,
+            }}
             onClick={this.addColor}
+            disabled={isPaletteFull}
           >
-            Add Color
+            {isPaletteFull ? "Palette Full" : "Add Color"}
           </Button>
         </div>
         <div className={classes.paletteContainer}>
