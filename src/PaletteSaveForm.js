@@ -1,58 +1,51 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Link } from "react-router-dom";
+import PaletteSaveDialogue from "./PaletteSaveDialogue";
 
 class PaletteSaveForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newPaletteName: "",
+      saveDialogueOpen: false,
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.openSaveDialogue = this.openSaveDialogue.bind(this);
+    this.hideSaveDialogue = this.hideSaveDialogue.bind(this);
   }
 
-  componentDidMount() {
-    ValidatorForm.addValidationRule("paletteNameUnique", (value) =>
-      this.props.palettes.every(
-        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-      )
-    );
-    ValidatorForm.addValidationRule(
-      "reqMinColor",
-      (value) => this.props.colors.length >= this.props.minColors
-    );
+  openSaveDialogue() {
+    this.setState({ saveDialogueOpen: true });
   }
 
-  handleChange(evt) {
-    this.setState({ newPaletteName: evt.target.value });
+  hideSaveDialogue() {
+    this.setState({ saveDialogueOpen: false });
   }
 
   render() {
+    const { handleSubmit, palettes, colors, minColors } = this.props;
     return (
       <div>
-        <ValidatorForm
-          onSubmit={() => this.props.handleSubmit(this.state.newPaletteName)}
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={this.openSaveDialogue}
         >
-          <TextValidator
-            value={this.state.newPaletteName}
-            onChange={this.handleChange}
-            validators={["required", "paletteNameUnique", "reqMinColor"]}
-            errorMessages={[
-              "Enter Palette Name",
-              "Palette name already taken",
-              "Require atleast 1 color in palette",
-            ]}
-          />
-          <Button variant="contained" color="primary" type="submit">
-            Save Palette
+          Save Palette
+        </Button>
+        <Link to="/">
+          <Button variant="contained" color="secondary">
+            Go Back
           </Button>
-          <Link to="/">
-            <Button variant="contained" color="secondary">
-              Go Back
-            </Button>
-          </Link>
-        </ValidatorForm>
+        </Link>
+        {this.state.saveDialogueOpen && (
+          <PaletteSaveDialogue
+            handleSubmit={handleSubmit}
+            palettes={palettes}
+            colors={colors}
+            minColors={minColors}
+            hideSaveDialogue={this.hideSaveDialogue}
+          />
+        )}
       </div>
     );
   }
