@@ -11,6 +11,18 @@ import Slider from "@material-ui/core/Slider";
 
 import "./Palette.css";
 import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = {
+  root: {
+    backgroundColor: "#323232",
+    height: "100vh",
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
+};
 
 class Palette extends Component {
   constructor(props) {
@@ -45,6 +57,7 @@ class Palette extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     const { colors, paletteName, id } = this.props.palette;
     const colorBoxes = colors.map((color) => (
       <ColorBox
@@ -53,7 +66,7 @@ class Palette extends Component {
       />
     ));
     return (
-      <div className="palette">
+      <div className={classes.root}>
         <Link to="/">
           <h1 className="header">colorPalettes</h1>
         </Link>
@@ -103,4 +116,4 @@ class Palette extends Component {
   }
 }
 
-export default Palette;
+export default withStyles(styles)(Palette);

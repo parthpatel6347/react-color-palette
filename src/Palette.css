@@ -1,10 +1,4 @@
-.palette{
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
+
 
 .palette-container{
     height: 70%;
