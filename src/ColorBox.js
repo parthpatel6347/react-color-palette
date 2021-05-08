@@ -35,7 +35,7 @@ class ColorBox extends Component {
                 <p className={isDark && "white-font"}>{name}</p>
               </div> */}
               <i
-                className={`fas fa-copy ${isDark && "white-font"}`}
+                className={`Icons-top fas fa-copy ${isDark && "white-font"}`}
                 data-tip
                 data-for="copy"
               ></i>
@@ -50,7 +50,7 @@ class ColorBox extends Component {
             COPY
           </ReactTooltip>
           <i
-            className={`fas fa-palette ${isDark && "white-font"}`}
+            className={`Icons-top fas fa-palette ${isDark && "white-font"}`}
             data-tip
             data-for="more"
           ></i>
@@ -65,7 +65,7 @@ class ColorBox extends Component {
         </div>
         <div className={`Copied-msg ${this.state.copied && "show"}`}>
           <h1 className={isDark && "white-font"}>
-            Copied<i className="fas fa-check"></i>
+            Copied<i className="Icon-check fas fa-check"></i>
           </h1>
         </div>
       </div>

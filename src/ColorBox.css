@@ -1,34 +1,3 @@
-.Copied-msg{
-    width: 100%;
-    height: 0px;
-    background-color: rgba(255, 255, 255, 0);
-    position: absolute;
-    bottom: 0;
-    opacity:1;
-    text-align: center;
-}
-
-.Copied-msg.show{
-    background-color: rgba(255, 255, 255, 0.4);
-    height: 40px;
-    transition: all .3s ease-in-out;
-}
-
-.ColorBox:first-child .Copied-msg{
-    border-bottom-left-radius: 13px;
-    }
-    
-    .ColorBox:last-child .Copied-msg{
-        border-bottom-right-radius: 13px;
-        }
-
-.Copied-msg h1{
-/* background-color: rgba(255, 255, 255, .5); */
-font-size: 1rem;
-font-weight: 500;
-margin: 9px auto 0;
-letter-spacing: 1px;
-}
 
 .ColorBox{
  width: calc(100%/6);
@@ -66,18 +35,17 @@ border-bottom-left-radius: 13px;
     font-size: 1rem;
 }
 
-.ColorBox-container i{
+.ColorBox-container .Icons-top{
     margin-top: 30px;
     font-size: 1rem;
     opacity: 0;
 }
 
-.ColorBox:hover i{
+.ColorBox:hover .Icons-top{
     opacity: 0.3;
-    transition: 0.2s;
 }
 
-.ColorBox-container i:hover{
+.ColorBox-container .Icons-top:hover{
     opacity: 1;
     cursor: pointer;
     transform: scale(1.1);
@@ -104,59 +72,40 @@ border-bottom-left-radius: 13px;
 
 
  /* copied overlay */
- 
-.copied-overlay{
-    opacity: 0;
-    z-index: 5;
-    width: 1px;
-    height: 1px;
-    transition: transform 0.5s ease-in-out;
-
-}
-
-.copied-overlay.show{
-    opacity: 1;
-    transform: scale(5000);
-    z-index: 10;
-    position: absolute;
-}
-
-.copied-msg{
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    transform: scale(0.1);
-    opacity: 0;
-}
-
-.copied-msg.show{
-    opacity: 1;
-    transform: scale(1);
-    z-index: 15;
-    transition: all 0.3s ease-in-out;
-    transition-delay: 0.3s;
-}
-
-.copied-msg h1{
-    font-weight: 300;
-    font-size: 4rem;
+ .Copied-msg{
     width: 100%;
-    background: rgba(255, 255, 255, 0.2);
+    height: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    bottom: 0;
+    opacity:1;
     text-align: center;
-    margin-bottom: 0;
-    padding: 1rem;
-    text-transform: uppercase;
-    opacity: 0.7;
+    transition: all .3s ease-in-out;
 }
 
-.copied-msg p {
-    font-size: 1.5rem;
-    font-weight: 100;
-    opacity: 0.5;
+.Copied-msg.show{
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 40px;
+    transition: all .3s ease-in-out;
+}
+
+.ColorBox:first-child .Copied-msg{
+    border-bottom-left-radius: 13px;
+    }
+    
+    .ColorBox:last-child .Copied-msg{
+        border-bottom-right-radius: 13px;
+        }
+
+.Copied-msg h1{
+background-color: rgba(255, 255, 255, .5);
+font-size: 1rem;
+font-weight: 500;
+margin: 9px auto 0;
+}
+
+.Copied-msg h1 .Icon-check{
+    margin-left: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(2, 192, 2);
 }
