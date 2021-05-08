@@ -26,14 +26,14 @@ class ColorBox extends Component {
           <span className={isDark && "white-font"}>{name}</span>
           <CopyToClipboard text={name} onCopy={this.changeCopied}>
             <div>
-              <div
+              {/* <div
                 className={`copied-overlay ${this.state.copied && "show"}`}
-                style={{ background }}
-              />
-              <div className={`copied-msg ${this.state.copied && "show"}`}>
+                // style={{ background }}
+              /> */}
+              {/* <div className={`copied-msg ${this.state.copied && "show"}`}>
                 <h1 className={isDark && "white-font"}>Copied</h1>
                 <p className={isDark && "white-font"}>{name}</p>
-              </div>
+              </div> */}
               <i
                 className={`fas fa-copy ${isDark && "white-font"}`}
                 data-tip
@@ -62,6 +62,11 @@ class ColorBox extends Component {
           >
             MORE
           </ReactTooltip>
+        </div>
+        <div className={`Copied-msg ${this.state.copied && "show"}`}>
+          <h1 className={isDark && "white-font"}>
+            Copied<i className="fas fa-check"></i>
+          </h1>
         </div>
       </div>
     );
