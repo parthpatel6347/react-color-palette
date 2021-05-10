@@ -6,11 +6,9 @@
     background-color: teal;
     padding: 10px;
     border-radius: 20px;
+    display: flex;
 }
 
-.palette-colors{
-    height: 100%;
-}
 
 .palette-adjustments{
  width: 25%;

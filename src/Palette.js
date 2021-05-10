@@ -59,10 +59,12 @@ class Palette extends Component {
   render() {
     const { classes } = this.props;
     const { colors, paletteName, id } = this.props.palette;
-    const colorBoxes = colors.map((color) => (
+    const colorBoxes = colors.map((color, i) => (
       <ColorBox
+        key={i}
         background={this.colorProcess(color.color)}
         name={this.returnFormat(this.colorProcess(color.color))}
+        format={this.state.format}
       />
     ));
     return (
@@ -108,9 +110,7 @@ class Palette extends Component {
             </FormControl>
           </div>
         </div>
-        <div className="palette-container">
-          <div className="palette-colors">{colorBoxes}</div>
-        </div>
+        <div className="palette-container">{colorBoxes}</div>
       </div>
     );
   }

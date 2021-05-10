@@ -17,9 +17,7 @@ class App extends Component {
     this.deletePalette = this.deletePalette.bind(this);
   }
   findPalette(id) {
-    return this.state.palettes.find(function (palette) {
-      return palette.id === id;
-    });
+    return this.state.palettes.find((palette) => palette.id === id);
   }
 
   addPalette(newPalette) {

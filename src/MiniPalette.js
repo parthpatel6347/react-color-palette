@@ -19,6 +19,7 @@ const styles = {
     width: "100%",
     borderRadius: "5px",
     overflow: "hidden",
+    display: "flex",
   },
   title: {
     display: "flex",
@@ -32,7 +33,7 @@ const styles = {
   },
   miniColor: {
     height: "100%",
-    width: "calc(100%/6)",
+    flexGrow: "1",
     display: "inline-block",
     margin: "0 auto",
     position: "relative",
@@ -72,7 +73,7 @@ class MiniPalette extends Component {
       <div className={classes.root} onClick={handleClick}>
         <div className={classes.palette}>{miniColorBox}</div>
         <h5 className={classes.title}>
-          {paletteName}{" "}
+          {paletteName}
           <DeleteOutlinedIcon
             className={classes.deleteIcon}
             style={{ transition: "all 0.2s ease-in-out" }}

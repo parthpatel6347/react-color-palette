@@ -3,12 +3,15 @@ import "./ColorBox.css";
 import ReactTooltip from "react-tooltip";
 import chroma from "chroma-js";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import ColorScale from "./ColorScale";
 
 class ColorBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { copied: false };
+    this.state = { copied: false, scaleOpen: false };
     this.changeCopied = this.changeCopied.bind(this);
+    this.openScale = this.openScale.bind(this);
+    this.closeScale = this.closeScale.bind(this);
   }
   changeCopied() {
     console.log("in function");
@@ -17,23 +20,35 @@ class ColorBox extends Component {
     });
   }
 
+  openScale() {
+    this.setState({ scaleOpen: true });
+  }
+
+  closeScale() {
+    this.setState({ scaleOpen: false });
+  }
+
   render() {
     const { background, name } = this.props;
     const isDark = chroma(background).luminance() <= 0.07;
+    let colorScale = this.state.scaleOpen && (
+      <div className="Color-scale show">
+        <ColorScale
+          key={background}
+          color={background}
+          changeCopied={this.changeCopied}
+          closeScale={this.closeScale}
+          format={this.props.format}
+        />
+      </div>
+    );
     return (
       <div className="ColorBox" style={{ background }}>
+        {colorScale}
         <div className="ColorBox-container">
           <span className={isDark && "white-font"}>{name}</span>
           <CopyToClipboard text={name} onCopy={this.changeCopied}>
             <div>
-              {/* <div
-                className={`copied-overlay ${this.state.copied && "show"}`}
-                // style={{ background }}
-              /> */}
-              {/* <div className={`copied-msg ${this.state.copied && "show"}`}>
-                <h1 className={isDark && "white-font"}>Copied</h1>
-                <p className={isDark && "white-font"}>{name}</p>
-              </div> */}
               <i
                 className={`Icons-top fas fa-copy ${isDark && "white-font"}`}
                 data-tip
@@ -53,6 +68,7 @@ class ColorBox extends Component {
             className={`Icons-top fas fa-palette ${isDark && "white-font"}`}
             data-tip
             data-for="more"
+            onClick={this.openScale}
           ></i>
           <ReactTooltip
             className="tooltip"

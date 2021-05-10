@@ -1,6 +1,6 @@
 
 .ColorBox{
- width: calc(100%/6);
+ flex-grow: 1;
  height: 100%;
  display: inline-block;
  position: relative;
@@ -107,4 +107,15 @@ margin: 9px auto 0;
     margin-left: 5px;
     background-color: rgba(0, 0, 0, 0);
     color: rgba(2, 192, 2);
+}
+
+.Color-scale{
+    height: 0px;
+    overflow: hidden;
+    transition: all .2s;
+}
+
+.Color-scale.show{
+    height: 100%;
+    transition: all .2s;
 }
