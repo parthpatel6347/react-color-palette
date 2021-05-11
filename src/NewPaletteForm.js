@@ -19,7 +19,7 @@ class NewPaletteForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      colors: [{ color: "coral" }],
+      colors: [{ color: "#B5553B" }],
     };
     this.addColor = this.addColor.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -92,7 +92,11 @@ class NewPaletteForm extends Component {
           >
             Clear Palette
           </Button>
-          <ColorPicker isPaletteFull={isPaletteFull} addColor={this.addColor} />
+          <ColorPicker
+            colors={this.state.colors}
+            isPaletteFull={isPaletteFull}
+            addColor={this.addColor}
+          />
         </div>
         <div className={classes.paletteContainer}>
           <DraggableColorList
