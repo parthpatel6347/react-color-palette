@@ -43,6 +43,13 @@ const styles = {
     width: "25%",
     padding: "0 2.5% 0",
     alignItems: "center",
+    justifyContent: "space-between",
+  },
+  colorControls: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "column",
+    alignItems: "center",
   },
   HeaderContainer: {
     height: "20%",
@@ -52,6 +59,31 @@ const styles = {
       color: "#979797",
       fontWeight: "500",
     },
+  },
+  randBtn: {
+    marginTop: "1.5rem",
+    // width: "60%",
+    height: "2rem",
+    fontFamily: "'Josefin Sans', sans-serif",
+    fontSize: ".8rem",
+    letterSpacing: "0.07rem",
+    fontWeight: "400",
+    borderRadius: "15px",
+    paddingTop: "9px",
+    background:
+      "linear-gradient(90deg, hsla(189, 92%, 69%, 1) 0%, hsla(335, 89%, 66%, 1) 50%, hsla(240, 63%, 57%, 1) 100%)",
+  },
+  clearBtn: {
+    marginTop: "1.5rem",
+    // width: "60%",
+    height: "2rem",
+    fontFamily: "'Josefin Sans', sans-serif",
+    fontSize: ".8rem",
+    letterSpacing: "0.07rem",
+    fontWeight: "400",
+    borderRadius: "15px",
+    paddingTop: "9px",
+    // background: "#CE7073",
   },
 };
 
@@ -68,7 +100,7 @@ class NewPaletteForm extends Component {
     this.addColor = this.addColor.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeColor = this.removeColor.bind(this);
-    // this.clearPalette = this.clearPalette.bind(this);
+    this.clearPalette = this.clearPalette.bind(this);
     this.addRandColor = this.addRandColor.bind(this);
   }
 
@@ -100,9 +132,9 @@ class NewPaletteForm extends Component {
     }));
   };
 
-  // clearPalette() {
-  //   this.setState({ colors: [] });
-  // }
+  clearPalette() {
+    this.setState({ colors: [] });
+  }
 
   addRandColor() {
     const randColor = { color: chroma.random().hex() };
@@ -131,29 +163,34 @@ class NewPaletteForm extends Component {
             onSortEnd={this.onSortEnd}
           />
           <div className={classes.ControlsContainer}>
-            {/* <Button
-              variant="outlined"
-              color="secondary"
-              onClick={this.clearPalette}
-            >
-              Clear Palette
-            </Button> */}
-            <div className={classes.HeaderContainer}>
-              <h1>Create a Palette</h1>
+            <div className={classes.colorControls}>
+              <div className={classes.HeaderContainer}>
+                <h1>Create a Palette</h1>
+              </div>
+              <ColorPicker
+                colors={this.state.colors}
+                isPaletteFull={isPaletteFull}
+                addColor={this.addColor}
+              />
+              <Button
+                className={classes.randBtn}
+                variant="contained"
+                color="primary"
+                onClick={this.addRandColor}
+                disabled={isPaletteFull}
+              >
+                Random Color
+              </Button>
+              <Button
+                className={classes.clearBtn}
+                variant="outlined"
+                color="secondary"
+                onClick={this.clearPalette}
+              >
+                Clear Palette
+              </Button>
             </div>
-            <ColorPicker
-              colors={this.state.colors}
-              isPaletteFull={isPaletteFull}
-              addColor={this.addColor}
-            />
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={this.addRandColor}
-              disabled={isPaletteFull}
-            >
-              Random Color
-            </Button>
+
             <PaletteSaveForm
               palettes={palettes}
               colors={this.state.colors}

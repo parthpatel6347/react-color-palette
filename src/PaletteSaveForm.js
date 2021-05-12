@@ -4,6 +4,35 @@ import PaletteSaveDialogue from "./PaletteSaveDialogue";
 
 import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = {
+  main: {
+    paddingBottom: "2rem",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+  },
+  saveBtn: {
+    marginTop: "1rem",
+    width: "90px",
+    height: "2rem",
+    fontFamily: "'Josefin Sans', sans-serif",
+    fontSize: ".8rem",
+    letterSpacing: "0.07rem",
+    fontWeight: "400",
+    borderRadius: "15px",
+    background: "#0D66D0",
+    paddingTop: "9px",
+  },
+  popover: {
+    color: "#b9b9b9",
+    backgroundColor: "RGBa(37,37,37,0.9)",
+    fontFamily: "'Josefin Sans', sans-serif",
+    paddingRight: "1rem",
+    paddingLeft: "1rem",
+  },
+};
 
 class PaletteSaveForm extends Component {
   constructor(props) {
@@ -37,18 +66,20 @@ class PaletteSaveForm extends Component {
   render() {
     const open = Boolean(this.state.anchorEl);
     const id = open ? "popover" : undefined;
-    const { handleSubmit, palettes, colors, minColors } = this.props;
+    const { handleSubmit, palettes, colors, minColors, classes } = this.props;
     return (
-      <div>
+      <div className={classes.main}>
         <Button
-          variant="outlined"
+          className={classes.saveBtn}
+          variant="contained"
           color="primary"
           onClick={colors.length ? this.openSaveDialogue : this.handlePopOver}
           aria-describedby={id}
         >
-          Save Palette
+          Save
         </Button>
         <Popover
+          classes={{ paper: classes.popover }}
           id={id}
           open={open}
           anchorEl={this.state.anchorEl}
@@ -78,4 +109,4 @@ class PaletteSaveForm extends Component {
   }
 }
 
-export default PaletteSaveForm;
+export default withStyles(styles)(PaletteSaveForm);
