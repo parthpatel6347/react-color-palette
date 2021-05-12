@@ -6,7 +6,8 @@ import { SortableElement } from "react-sortable-hoc";
 const styles = {
   colorBox: {
     height: "100%",
-    width: "calc(100%/6)",
+    flexGrow: "1",
+    // width: "calc(100%/6)",
   },
   container: {
     display: "flex",

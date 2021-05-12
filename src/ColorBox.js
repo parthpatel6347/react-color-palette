@@ -30,7 +30,7 @@ class ColorBox extends Component {
 
   render() {
     const { background, name } = this.props;
-    const isDark = chroma(background).luminance() <= 0.07;
+    const isDark = chroma(background).get("lab.l") <= 60;
     let colorScale = this.state.scaleOpen && (
       <div className="Color-scale show">
         <ColorScale
@@ -46,7 +46,7 @@ class ColorBox extends Component {
       <div className="ColorBox" style={{ background }}>
         {colorScale}
         <div className="ColorBox-container">
-          <span className={isDark && "white-font"}>{name}</span>
+          <span className={isDark ? "white-font" : "dark-font"}>{name}</span>
           <CopyToClipboard text={name} onCopy={this.changeCopied}>
             <div>
               <i
@@ -80,7 +80,7 @@ class ColorBox extends Component {
           </ReactTooltip>
         </div>
         <div className={`Copied-msg ${this.state.copied && "show"}`}>
-          <h1 className={isDark && "white-font"}>
+          <h1 className={isDark ? "white-font" : undefined}>
             Copied<i className="Icon-check fas fa-check"></i>
           </h1>
         </div>
