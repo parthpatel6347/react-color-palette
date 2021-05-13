@@ -1,42 +1,64 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
+import Paper from "@material-ui/core/Paper";
 
 const styles = {
   root: {
-    backgroundColor: "white",
-    border: "1px solid black",
-    borderRadius: "5px",
-    padding: "0.5rem",
+    backgroundColor: "#424242",
+    fontFamily: "'Josefin Sans', sans-serif",
+    borderRadius: "20px",
     position: "relative",
     overflow: "hidden",
     cursor: "pointer",
+    display: "flex",
+    flexDirection: "column",
+    height: "150px",
     "&:hover svg": { opacity: "0.7" },
+    // boxShadow: " 10px 10px 30px #2b2b2b",
   },
+  // container: {
+  //   width: "70%",
+  //   height: "75%",
+  //   display: "flex",
+  //   justifyContent: "space-between",
+  //   alignItems: "center",
+  //   backgroundColor: "#424242",
+  //   borderRadius: "30px",
+  //   overflow: "hidden",
+  //   // boxShadow: " 20px 20px 60px #2b2b2b",
+  // },
   palette: {
     backgroundColor: "grey",
-    height: "100px",
+    height: "75%",
     width: "100%",
-    borderRadius: "5px",
-    overflow: "hidden",
     display: "flex",
   },
   title: {
+    height: "25%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     margin: "0",
     color: "black",
-    paddingTop: "0.5rem",
     fontSize: "1rem",
     position: "relative",
+    padding: "0 12px 0",
+  },
+  name: {
+    color: "#979797",
+    fontWeight: "500",
+    paddingTop: "4px",
+    width: "85%",
+    fontSize: ".95rem",
+    height: "1rem",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   miniColor: {
     height: "100%",
     flexGrow: "1",
-    display: "inline-block",
-    margin: "0 auto",
-    position: "relative",
   },
   deleteIcon: {
     color: "grey",
@@ -70,17 +92,17 @@ class MiniPalette extends Component {
       />
     ));
     return (
-      <div className={classes.root} onClick={handleClick}>
+      <Paper className={classes.root} onClick={handleClick} elevation={4}>
         <div className={classes.palette}>{miniColorBox}</div>
         <h5 className={classes.title}>
-          {paletteName}
+          <p className={classes.name}>{paletteName}</p>
           <DeleteOutlinedIcon
             className={classes.deleteIcon}
             style={{ transition: "all 0.2s ease-in-out" }}
             onClick={this.deletePalette}
           />
         </h5>
-      </div>
+      </Paper>
     );
   }
 }

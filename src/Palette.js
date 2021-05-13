@@ -6,14 +6,13 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 
-import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
 import Paper from "@material-ui/core/Paper";
 
-import "./Palette.css";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import sizes from "./styles/sizes";
 
 const styles = {
   root: {
@@ -25,6 +24,12 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
   },
+  header: {
+    position: "fixed",
+    display: "inline",
+    left: "0",
+    top: "0",
+  },
   container: {
     width: "70%",
     height: "75%",
@@ -35,6 +40,54 @@ const styles = {
     borderRadius: "30px",
     overflow: "hidden",
     // boxShadow: " 20px 20px 60px #2b2b2b",
+    [sizes.down("lg")]: {
+      width: "80%",
+      height: "70%",
+    },
+    [sizes.down("md")]: {
+      width: "85%",
+      height: "65%",
+    },
+  },
+  colorsContainer: {
+    height: "100%",
+    width: "70%",
+    display: "flex",
+  },
+  sidePanel: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    width: "25%",
+    padding: "0 2.5% 0",
+  },
+  paletteName: {
+    height: "20%",
+    display: "flex",
+    alignItems: "center",
+    "& h1": {
+      // display: "block",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      display: "box",
+      lineHeight: "33px", // to get ellipses on line 3
+      lineClamp: "3",
+      boxOrient: "vertical",
+      height: "98px",
+      color: "#979797",
+      fontWeight: "500",
+    },
+  },
+  adjustments: {
+    height: "80%",
+    color: "#979797",
+    letterSpacing: ".08em",
+    fontSize: ".8em",
+    textTransform: "uppercase",
+    "& p": {
+      marginTop: "1em",
+      marginBottom: "0",
+    },
   },
   label: {
     marginTop: "2px",
@@ -128,16 +181,16 @@ class Palette extends Component {
     return (
       <div className={classes.root}>
         <Link to="/">
-          <h1 className="header">colorPalettes</h1>
+          <h1 className={classes.header}>colorPalettes</h1>
         </Link>
         <Paper className={classes.container} elevation={10}>
-          <div className="palette-container">{colorBoxes}</div>
+          <div className={classes.colorsContainer}>{colorBoxes}</div>
 
-          <div className="palette-adjustments">
-            <div className="header-container">
+          <div className={classes.sidePanel}>
+            <div className={classes.paletteName}>
               <h1>{paletteName}</h1>
             </div>
-            <div className="adjustments-container">
+            <div className={classes.adjustments}>
               <p>Lightness</p>
               <CustomSlider
                 className={classes.slider}
