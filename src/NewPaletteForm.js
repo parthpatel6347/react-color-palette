@@ -8,6 +8,7 @@ import PaletteSaveForm from "./PaletteSaveForm";
 import ColorPicker from "./ColorPicker";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
+import sizes from "./styles/sizes";
 
 const styles = {
   root: {
@@ -28,6 +29,15 @@ const styles = {
     backgroundColor: "#424242",
     borderRadius: "30px",
     overflow: "hidden",
+    [sizes.down("lg")]: {
+      width: "80%",
+      height: "70%",
+    },
+    [sizes.down("md")]: {
+      width: "85%",
+      height: "65%",
+      borderRadius: "20px",
+    },
     // boxShadow: " 20px 20px 60px #2b2b2b",
   },
   header: {

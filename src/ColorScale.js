@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import chroma from "chroma-js";
 import ColorScaleBox from "./ColorScaleBox";
 import { withStyles } from "@material-ui/core/styles";
+import sizes from "./styles/sizes";
 
 const styles = {
   colorScale: {
@@ -12,6 +13,11 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",
+    [sizes.down("xs")]: {
+      flexDirection: "row",
+      height: "100%",
+      zIndex: "2",
+    },
   },
 };
 

@@ -47,12 +47,29 @@ const styles = {
     [sizes.down("md")]: {
       width: "85%",
       height: "65%",
+      borderRadius: "20px",
+    },
+    [sizes.down("sm")]: {
+      flexDirection: "column",
+    },
+    [sizes.down("xs")]: {
+      height: "80%",
     },
   },
   colorsContainer: {
     height: "100%",
     width: "70%",
     display: "flex",
+    [sizes.down("md")]: {
+      width: "75%",
+    },
+    [sizes.down("sm")]: {
+      width: "100%",
+      height: "80%",
+    },
+    [sizes.down("xs")]: {
+      flexDirection: "column",
+    },
   },
   sidePanel: {
     height: "100%",
@@ -60,11 +77,27 @@ const styles = {
     flexDirection: "column",
     width: "25%",
     padding: "0 2.5% 0",
+    [sizes.down("md")]: {
+      width: "20%",
+    },
+    [sizes.down("sm")]: {
+      flexDirection: "row",
+      alignItems: "center",
+      width: "100%",
+      height: "20%",
+      padding: "2.5% 0 2.5%",
+    },
+    [sizes.down("xs")]: {
+      padding: "2.5% 0 2.5%",
+    },
   },
   paletteName: {
     height: "20%",
     display: "flex",
     alignItems: "center",
+    [sizes.down("sm")]: {
+      width: "40%",
+    },
     "& h1": {
       // display: "block",
       overflow: "hidden",
@@ -76,6 +109,16 @@ const styles = {
       height: "98px",
       color: "#979797",
       fontWeight: "500",
+      [sizes.down("md")]: {
+        fontSize: "24px",
+      },
+      [sizes.down("sm")]: {
+        margin: "0 1rem 0 1.5rem",
+        fontSize: "24px",
+      },
+      [sizes.down("xs")]: {
+        fontSize: "20px",
+      },
     },
   },
   adjustments: {
@@ -87,6 +130,37 @@ const styles = {
     "& p": {
       marginTop: "1em",
       marginBottom: "0",
+    },
+    [sizes.down("md")]: {
+      fontSize: ".7em",
+    },
+    [sizes.down("sm")]: {
+      display: "flex",
+      justifyContent: "space-around",
+      alignItems: "center",
+      height: "100%",
+      width: "80%",
+    },
+  },
+  sliders: {
+    [sizes.down("sm")]: {
+      width: "40%",
+    },
+    [sizes.down("xs")]: {
+      display: "flex",
+      height: "100%",
+      flexDirection: "column",
+      justifyContent: "space-around",
+      width: "50%",
+    },
+  },
+  radio: {
+    [sizes.down("sm")]: {
+      width: "40%",
+    },
+    [sizes.down("xs")]: {
+      textAlign: "center",
+      width: "30%",
     },
   },
   label: {
@@ -191,29 +265,30 @@ class Palette extends Component {
               <h1>{paletteName}</h1>
             </div>
             <div className={classes.adjustments}>
-              <p>Lightness</p>
-              <CustomSlider
-                className={classes.slider}
-                value={this.state.lightness}
-                onChange={this.changeLightness}
-                min={-100}
-                max={100}
-                aria-labelledby="continuous-slider"
-                track={false}
-                valueLabelDisplay="auto"
-              />
-              <p>Saturation</p>
-              <CustomSlider
-                value={this.state.saturation}
-                onChange={this.changeSaturation}
-                min={-100}
-                max={100}
-                aria-labelledby="continuous-slider"
-                track={false}
-                valueLabelDisplay="auto"
-              />
-
-              <div>
+              <div className={classes.sliders}>
+                <p>Lightness</p>
+                <CustomSlider
+                  className={classes.slider}
+                  value={this.state.lightness}
+                  onChange={this.changeLightness}
+                  min={-100}
+                  max={100}
+                  aria-labelledby="continuous-slider"
+                  track={false}
+                  valueLabelDisplay="auto"
+                />
+                <p>Saturation</p>
+                <CustomSlider
+                  value={this.state.saturation}
+                  onChange={this.changeSaturation}
+                  min={-100}
+                  max={100}
+                  aria-labelledby="continuous-slider"
+                  track={false}
+                  valueLabelDisplay="auto"
+                />
+              </div>
+              <div className={classes.radio}>
                 <FormControl component="fieldset">
                   <RadioGroup
                     aria-label="copy format"

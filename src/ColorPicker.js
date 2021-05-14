@@ -4,11 +4,13 @@ import Button from "@material-ui/core/Button";
 import Popover from "@material-ui/core/Popover";
 import { withStyles } from "@material-ui/core/styles";
 import chroma from "chroma-js";
+import sizes from "./styles/sizes";
 
 const styles = {
   root: {
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     borderRadius: "15px",
     overflow: "hidden",
     width: "100%",
@@ -31,6 +33,9 @@ const styles = {
     letterSpacing: "0.07rem",
     fontWeight: "400",
     borderRadius: "0",
+    [sizes.down("lg")]: {
+      height: "65px",
+    },
   },
   icon: {
     marginRight: "6px",

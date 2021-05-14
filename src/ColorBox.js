@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import "./ColorBox.css";
-import ReactTooltip from "react-tooltip";
 import chroma from "chroma-js";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import ColorScale from "./ColorScale";
 import { withStyles } from "@material-ui/core/styles";
+import sizes from "./styles/sizes";
 
 const styles = {
   root: {
@@ -21,7 +20,14 @@ const styles = {
       transition: "all .1s",
       "& $icons": {
         opacity: "0.6",
+        [sizes.down("xs")]: {
+          opacity: ".7",
+        },
       },
+    },
+    [sizes.down("xs")]: {
+      width: "100%",
+      height: "unset",
     },
   },
   mainContainer: {
@@ -34,6 +40,24 @@ const styles = {
       width: "70px",
       textAlign: "center",
       fontWeight: "500",
+      [sizes.down("md")]: {
+        fontSize: ".8em",
+      },
+      [sizes.down("xs")]: {
+        bottom: "0",
+        left: "0",
+        position: "absolute",
+        marginLeft: "0.5em",
+        marginBottom: "0.5em",
+        width: "unset",
+        fontSize: ".8em",
+      },
+    },
+    [sizes.down("xs")]: {
+      height: "100%",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-evenly",
     },
   },
   icons: {
@@ -45,6 +69,13 @@ const styles = {
       cursor: "pointer",
       transform: "scale(1.1)",
       transition: "0s",
+    },
+    [sizes.down("md")]: {
+      fontSize: "0.8rem",
+    },
+    [sizes.down("xs")]: {
+      fontSize: "1.3rem",
+      marginTop: "unset",
     },
   },
   copiedMsg: {
@@ -60,11 +91,14 @@ const styles = {
       fontSize: "1rem",
       fontWeight: "500",
       margin: "9px auto 0",
+      [sizes.down("xs")]: {
+        fontSize: ".9rem",
+      },
     },
   },
   showCopiedMsg: {
     backgroundColor: "rgba(255, 255, 255, 0.3)",
-    height: "40px",
+    height: "30px",
     transition: "all .3s ease-in-out",
   },
   checkIcon: {
@@ -75,6 +109,9 @@ const styles = {
   colorScale: {
     height: "100%",
     overflow: "hidden",
+    [sizes.down("xs")]: {
+      width: "100%",
+    },
   },
   dynamicColor: {
     color: (props) =>
@@ -122,38 +159,16 @@ class ColorBox extends Component {
       <div className={classes.root} style={{ background }}>
         {colorScale}
         <div className={classes.mainContainer}>
-          <span className={classes.dynamicColor}>{name}</span>
+          <span className={classes.dynamicColor}>{name} </span>
           <CopyToClipboard text={name} onCopy={this.changeCopied}>
-            <div>
-              <i
-                className={`${classes.icons} fas fa-copy ${classes.dynamicColor}`}
-                data-tip
-                data-for="copy"
-              ></i>
-            </div>
+            <i
+              className={`${classes.icons} fas fa-clone ${classes.dynamicColor}`}
+            ></i>
           </CopyToClipboard>
-          <ReactTooltip
-            className="tooltip"
-            id="copy"
-            place="right"
-            effect="solid"
-          >
-            COPY
-          </ReactTooltip>
           <i
             className={`${classes.icons} fas fa-palette ${classes.dynamicColor}`}
-            data-tip
-            data-for="more"
             onClick={this.openScale}
           ></i>
-          <ReactTooltip
-            className="tooltip"
-            id="more"
-            place="right"
-            effect="solid"
-          >
-            MORE
-          </ReactTooltip>
         </div>
         <div
           className={`${classes.copiedMsg} ${

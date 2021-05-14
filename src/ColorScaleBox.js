@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { withStyles } from "@material-ui/core/styles";
 import chroma from "chroma-js";
+import sizes from "./styles/sizes";
 
 const styles = {
   colorScaleBox: {
@@ -9,7 +10,9 @@ const styles = {
     flexGrow: "1",
     display: "flex",
     textAlign: "center",
-    transition: ".1s",
+    justifyContent: "center",
+    transition: "all .1s",
+    alignItems: "center",
     "& p": {
       color: (props) =>
         chroma(props.color).get("lab.l") <= 60 ? "white" : "#4B4B4B",
@@ -26,11 +29,20 @@ const styles = {
     },
     "&:hover": {
       flexGrow: "1.5",
-      transition: ".1s",
+      transition: "all .1s",
     },
     "&:hover p": {
       opacity: "1",
       position: "relative",
+      [sizes.down("xs")]: {
+        opacity: "0",
+      },
+    },
+  },
+  copyContainer: {
+    [sizes.down("xs")]: {
+      height: "100%",
+      width: "100%",
     },
   },
 };
@@ -51,7 +63,9 @@ class ColorScaleBox extends Component {
           text={this.props.name}
           onCopy={this.props.changeCopied}
         >
-          <p>{this.props.name}</p>
+          <div className={this.props.classes.copyContainer}>
+            <p>{this.props.name}</p>
+          </div>
         </CopyToClipboard>
       </div>
     );
