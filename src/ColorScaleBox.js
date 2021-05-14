@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { withStyles } from "@material-ui/core/styles";
+import chroma from "chroma-js";
 
 const styles = {
   colorScaleBox: {
@@ -10,6 +11,8 @@ const styles = {
     textAlign: "center",
     transition: ".1s",
     "& p": {
+      color: (props) =>
+        chroma(props.color).get("lab.l") <= 60 ? "white" : "#4B4B4B",
       margin: "auto",
       opacity: "0",
       fontSize: ".85rem",
