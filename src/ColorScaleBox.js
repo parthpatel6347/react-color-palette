@@ -1,6 +1,36 @@
 import React, { Component } from "react";
-import "./ColorScaleBox.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = {
+  colorScaleBox: {
+    width: "100%",
+    flexGrow: "1",
+    display: "flex",
+    textAlign: "center",
+    transition: ".1s",
+    "& p": {
+      margin: "auto",
+      opacity: "0",
+      fontSize: ".85rem",
+      fontWeight: "400",
+      letterSpacing: "1px",
+      position: "absolute",
+      "&:hover": {
+        textDecoration: "underline",
+        cursor: "pointer",
+      },
+    },
+    "&:hover": {
+      flexGrow: "1.5",
+      transition: ".1s",
+    },
+    "&:hover p": {
+      opacity: "1",
+      position: "relative",
+    },
+  },
+};
 
 class ColorScaleBox extends Component {
   constructor(props) {
@@ -11,7 +41,7 @@ class ColorScaleBox extends Component {
   render() {
     return (
       <div
-        className="ColorScaleBox"
+        className={this.props.classes.colorScaleBox}
         style={{ backgroundColor: this.props.color }}
       >
         <CopyToClipboard
@@ -25,4 +55,4 @@ class ColorScaleBox extends Component {
   }
 }
 
-export default ColorScaleBox;
+export default withStyles(styles)(ColorScaleBox);
