@@ -1,7 +1,19 @@
 import React, { Component } from "react";
-import "./ColorScale.css";
 import chroma from "chroma-js";
 import ColorScaleBox from "./ColorScaleBox";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = {
+  colorScale: {
+    height: "inherit",
+    width: "100%",
+    position: "absolute",
+    bottom: "0",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+  },
+};
 
 class ColorScale extends Component {
   constructor(props) {
@@ -29,7 +41,10 @@ class ColorScale extends Component {
 
   render() {
     return (
-      <div className="ColorScale" onClick={this.props.closeScale}>
+      <div
+        className={this.props.classes.colorScale}
+        onClick={this.props.closeScale}
+      >
         {this.state.colorScale.map((c) => (
           <ColorScaleBox
             key={c}
@@ -43,4 +58,4 @@ class ColorScale extends Component {
   }
 }
 
-export default ColorScale;
+export default withStyles(styles)(ColorScale);
