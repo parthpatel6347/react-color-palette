@@ -5,6 +5,7 @@ import PaletteSaveDialogue from "./PaletteSaveDialogue";
 import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
+import sizes from "./styles/sizes";
 
 const styles = {
   main: {
@@ -24,6 +25,12 @@ const styles = {
     borderRadius: "15px",
     background: "#0D66D0",
     paddingTop: "9px",
+    [sizes.down("md")]: {
+      fontSize: ".7rem",
+      width: "80px",
+      height: "1.8rem",
+      borderRadius: "14px",
+    },
   },
   popover: {
     color: "#b9b9b9",

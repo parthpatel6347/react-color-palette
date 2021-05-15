@@ -98,8 +98,11 @@ const styles = {
   },
   showCopiedMsg: {
     backgroundColor: "rgba(255, 255, 255, 0.3)",
-    height: "30px",
+    height: "35px",
     transition: "all .3s ease-in-out",
+    [sizes.down("xs")]: {
+      height: "30px",
+    },
   },
   checkIcon: {
     marginLeft: "5px",

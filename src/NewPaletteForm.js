@@ -68,6 +68,12 @@ const styles = {
     "& h1": {
       color: "#979797",
       fontWeight: "500",
+      [sizes.down("lg")]: {
+        fontSize: "1.8rem",
+      },
+      [sizes.down("md")]: {
+        fontSize: "1.6em",
+      },
     },
   },
   randBtn: {
@@ -82,6 +88,11 @@ const styles = {
     paddingTop: "9px",
     background:
       "linear-gradient(90deg, hsla(189, 92%, 69%, 1) 0%, hsla(335, 89%, 66%, 1) 50%, hsla(240, 63%, 57%, 1) 100%)",
+    [sizes.down("md")]: {
+      fontSize: ".7rem",
+      height: "1.8rem",
+      borderRadius: "14px",
+    },
   },
   clearBtn: {
     marginTop: "1.5rem",
@@ -94,6 +105,11 @@ const styles = {
     borderRadius: "15px",
     paddingTop: "9px",
     // background: "#CE7073",
+    [sizes.down("md")]: {
+      fontSize: ".7rem",
+      height: "1.8rem",
+      borderRadius: "14px",
+    },
   },
 };
 
@@ -105,7 +121,7 @@ class NewPaletteForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      colors: [{ color: "#B5553B" }],
+      colors: [{ color: chroma.random().hex() }],
     };
     this.addColor = this.addColor.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

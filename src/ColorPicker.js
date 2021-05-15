@@ -36,6 +36,9 @@ const styles = {
     [sizes.down("lg")]: {
       height: "65px",
     },
+    [sizes.down("md")]: {
+      fontSize: ".7rem",
+    },
   },
   icon: {
     marginRight: "6px",
@@ -55,7 +58,7 @@ const styles = {
 class ColorPicker extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentColor: "#B5553B", anchorEl: null };
+    this.state = { currentColor: this.props.colors[0].color, anchorEl: null };
     this.changeCurrColor = this.changeCurrColor.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePopOver = this.handlePopOver.bind(this);
