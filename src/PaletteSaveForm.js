@@ -13,6 +13,9 @@ const styles = {
     width: "100%",
     display: "flex",
     justifyContent: "center",
+    [sizes.down("sm")]: {
+      paddingBottom: "1rem",
+    },
   },
   saveBtn: {
     marginTop: "1rem",

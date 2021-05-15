@@ -16,12 +16,18 @@ const styles = {
     width: "100%",
     height: "100%",
     border: "1px solid #323232",
+    [sizes.down("sm")]: {
+      width: "40%",
+    },
   },
   colorPicker: {
     width: "100% !important",
     background: "#424242 !important",
     boxShadow: "none !important",
     fontFamily: "'Josefin Sans', sans-serif !important",
+    [sizes.down("sm")]: {
+      height: "85%",
+    },
   },
   addColorBtn: {
     width: "100% !important",
