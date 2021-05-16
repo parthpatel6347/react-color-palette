@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/core/styles";
+import sizes from "./styles/sizes";
 
 const styles = {
   root: {
@@ -17,6 +18,21 @@ const styles = {
     flexDirection: "column",
     alignItems: "flex-start",
     flexWrap: "wrap",
+    [sizes.down("lg")]: {
+      width: "65%",
+    },
+    [sizes.down("l")]: {
+      width: "75%",
+    },
+    [sizes.down("md")]: {
+      width: "80%",
+    },
+    [sizes.down("xs")]: {
+      width: "85%",
+    },
+    [sizes.down("xxs")]: {
+      width: "60%",
+    },
   },
   nav: {
     display: "flex",
@@ -35,6 +51,12 @@ const styles = {
     display: "grid",
     gridTemplateColumns: "repeat(3,30%)",
     gridGap: "5%",
+    [sizes.down("sm")]: {
+      gridTemplateColumns: "repeat(2,45%)",
+    },
+    [sizes.down("xxs")]: {
+      gridTemplateColumns: "repeat(1,100%)",
+    },
   },
 };
 

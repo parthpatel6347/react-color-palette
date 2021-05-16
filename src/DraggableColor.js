@@ -1,8 +1,9 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { SortableElement } from "react-sortable-hoc";
 import chroma from "chroma-js";
+import sizes from "./styles/sizes";
+import CloseIcon from "@material-ui/icons/Close";
 
 const styles = {
   colorBox: {
@@ -17,6 +18,10 @@ const styles = {
         opacity: "1",
       },
     },
+    [sizes.down("xs")]: {
+      display: "flex",
+      justifyContent: "center",
+    },
     // transition: "all 0.2s",
 
     // width: "calc(100%/6)",
@@ -29,6 +34,9 @@ const styles = {
     color: (props) =>
       chroma(props.color.color).get("lab.l") <= 60 ? "white" : "#4B4B4B",
     height: "100%",
+    [sizes.down("xs")]: {
+      width: "40px",
+    },
   },
   colorName: {
     opacity: "0.75",
@@ -38,6 +46,11 @@ const styles = {
     textTransform: "uppercase",
     "&:hover": {
       cursor: "default",
+    },
+    [sizes.down("xs")]: {
+      fontSize: "0.8em",
+      transform: "rotate(-90deg)",
+      marginBottom: "30px",
     },
   },
   deleteIcon: {
@@ -49,6 +62,11 @@ const styles = {
     "&:hover": {
       transform: "scale(1.3)",
     },
+    [sizes.down("xs")]: {
+      opacity: ".7",
+      marginBottom: "10px",
+      fontSize: "1rem",
+    },
   },
 };
 
@@ -58,10 +76,7 @@ const DraggableColor = SortableElement((props) => {
     <div className={classes.colorBox} style={{ backgroundColor: color.color }}>
       <div className={classes.container}>
         <span className={classes.colorName}>{color.color}</span>
-        <HighlightOffIcon
-          className={classes.deleteIcon}
-          onClick={handleRemove}
-        />
+        <CloseIcon className={classes.deleteIcon} onClick={handleRemove} />
       </div>
     </div>
   );

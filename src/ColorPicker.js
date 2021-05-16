@@ -17,7 +17,11 @@ const styles = {
     height: "100%",
     border: "1px solid #323232",
     [sizes.down("sm")]: {
-      width: "40%",
+      width: "50%",
+    },
+    [sizes.down("xs")]: {
+      width: "50%",
+      height: "95%",
     },
   },
   colorPicker: {
@@ -44,6 +48,12 @@ const styles = {
     },
     [sizes.down("md")]: {
       fontSize: ".7rem",
+    },
+    [sizes.down("xs")]: {
+      fontSize: ".65rem",
+      letterSpacing: "0.06rem",
+      fontWeight: "600",
+      height: "15%",
     },
   },
   icon: {

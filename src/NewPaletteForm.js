@@ -36,7 +36,7 @@ const styles = {
     [sizes.down("md")]: {
       width: "85%",
       height: "65%",
-      borderRadius: "20px",
+      borderRadius: "25px",
     },
     [sizes.down("sm")]: {
       flexDirection: "column",
@@ -65,6 +65,9 @@ const styles = {
       padding: "2.5% 0",
       justifyContent: "space-around",
     },
+    [sizes.down("xs")]: {
+      justifyContent: "space-evenly",
+    },
   },
   colorControls: {
     display: "flex",
@@ -88,6 +91,9 @@ const styles = {
       flexDirection: "column",
       padding: "0 1.5em 0",
     },
+    [sizes.down("xs")]: {
+      display: "none",
+    },
     "& h1": {
       color: "#979797",
       fontWeight: "500",
@@ -100,6 +106,9 @@ const styles = {
       [sizes.down("sm")]: {
         textAlign: "center",
         fontSize: "1.9rem",
+      },
+      [sizes.down("s")]: {
+        fontSize: "1.7rem",
       },
     },
     "& h2": {
@@ -126,6 +135,10 @@ const styles = {
       flexDirection: "column",
       justifyContent: "space-between",
       alignItems: "center",
+    },
+    [sizes.down("s")]: {
+      width: "20%",
+      padding: "0 1.5rem",
     },
   },
   colorButtons: {
@@ -154,6 +167,12 @@ const styles = {
       height: "1.8rem",
       borderRadius: "14px",
     },
+    [sizes.down("s")]: {
+      fontSize: ".6rem",
+      height: "2rem",
+      lineHeight: ".7rem",
+      borderRadius: "1rem",
+    },
   },
   clearBtn: {
     marginTop: "1.5rem",
@@ -170,6 +189,13 @@ const styles = {
       fontSize: ".7rem",
       height: "1.8rem",
       borderRadius: "14px",
+    },
+    [sizes.down("s")]: {
+      fontSize: ".6rem",
+      height: "2rem",
+      lineHeight: ".7rem",
+      paddingTop: "5px",
+      borderRadius: "1rem",
     },
   },
 };
@@ -247,6 +273,7 @@ class NewPaletteForm extends Component {
             colors={this.state.colors}
             removeColor={this.removeColor}
             axis="x"
+            lockAxis="x"
             onSortEnd={this.onSortEnd}
           />
           <div className={classes.ControlsContainer}>
