@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+
 import sizes from "./styles/sizes";
 
 const styles = {
@@ -11,13 +13,14 @@ const styles = {
     color: "white",
     color: "white",
     backgroundColor: "black",
-    marginBottom: "2.5rem",
+    // marginBottom: "2.5rem",
+    height: "3rem",
   },
   container: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "50%",
+    width: (props) => (props.location === "home" ? "50%" : "70%"),
     fontFamily: "'Josefin Sans', sans-serif",
     "& a": {
       color: "#979797",
@@ -26,6 +29,7 @@ const styles = {
       fontSize: ".85rem",
       fontWeight: "600",
       letterSpacing: ".1rem",
+      marginRight: "0.5em",
       "&:hover": {
         color: "white",
       },
@@ -40,31 +44,69 @@ const styles = {
       textFillColor: "transparent",
     },
     [sizes.down("lg")]: {
-      width: "65%",
+      width: (props) => (props.location === "home" ? "65%" : "80%"),
     },
     [sizes.down("l")]: {
-      width: "75%",
+      width: (props) => (props.location === "home" ? "75%" : "80%"),
     },
     [sizes.down("md")]: {
-      width: "80%",
+      width: (props) => (props.location === "home" ? "80%" : "85%"),
     },
     [sizes.down("xs")]: {
-      width: "85%",
+      width: (props) => (props.location === "home" ? "85%" : "85%"),
     },
     [sizes.down("xxs")]: {
-      width: "90%",
+      width: (props) => (props.location === "home" ? "90%" : "90%"),
+    },
+  },
+  backBtn: {
+    padding: "0",
+    color: "#979797",
+    background: "none",
+    boxShadow: "none",
+    fontFamily: "'Josefin Sans', sans-serif",
+    textTransform: "unset",
+    display: "flex",
+    fontSize: ".85rem",
+    fontWeight: "600",
+    letterSpacing: ".1rem",
+    "&:hover": {
+      background: "none",
+      boxShadow: "none",
+      color: "white",
+      transition: "all .15s ease-in-out",
+    },
+    "& i": {
+      fontSize: ".8rem",
+      marginRight: "8px",
+      paddingBottom: "2px",
     },
   },
 };
 
 class Navbar extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, location } = this.props;
     return (
       <nav className={classes.nav}>
         <div className={classes.container}>
-          <h1>colorPalette</h1>
-          <Link to="/palette/new">New Palette</Link>
+          {location === "home" ? (
+            <h1>colorPalette</h1>
+          ) : (
+            <Link to="/">
+              <Button
+                className={classes.backBtn}
+                variant="contained"
+                color="secondary"
+                disableRipple
+              >
+                <i class="fas fa-chevron-left"></i>All Palettes
+              </Button>
+            </Link>
+          )}
+          {location !== "newPalette" && (
+            <Link to="/palette/new">New Palette</Link>
+          )}
         </div>
       </nav>
     );

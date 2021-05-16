@@ -12,12 +12,14 @@ const styles = {
     alignItems: "center",
     justifyContent: "flex-start",
     flexDirection: "column",
+    paddingTop: "2.5rem",
   },
   container: {
     width: "50%",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
+    justifyContent: "center",
     flexWrap: "wrap",
     [sizes.down("lg")]: {
       width: "65%",
@@ -62,7 +64,7 @@ class PaletteList extends Component {
 
     return (
       <div className={classes.root}>
-        <Navbar />
+        {/* <Navbar /> */}
         <div className={classes.container}>
           <div className={classes.palettes}>
             {palettes.map((palette) => (

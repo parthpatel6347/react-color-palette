@@ -6,10 +6,9 @@ import arrayMove from "array-move";
 import chroma from "chroma-js";
 import PaletteSaveForm from "./PaletteSaveForm";
 import ColorPicker from "./ColorPicker";
-import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import sizes from "./styles/sizes";
+import Navbar from "./Navbar";
 
 const styles = {
   root: {
@@ -18,12 +17,20 @@ const styles = {
     height: "100vh",
     overflow: "hidden",
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
+    justifyContent: "flex-start",
     alignItems: "center",
+  },
+  main: {
+    display: "flex",
+    height: "100%",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   container: {
     width: "70%",
-    height: "75%",
+    height: "80%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -45,31 +52,7 @@ const styles = {
     },
     // boxShadow: " 20px 20px 60px #2b2b2b",
   },
-  header: {
-    position: "fixed",
-    color: "#979797",
-    display: "inline",
-    left: "15px",
-    top: "15px",
-    background: "none",
-    boxShadow: "none",
-    height: "2rem",
-    fontFamily: "'Josefin Sans', sans-serif",
-    fontSize: "1.6rem",
-    textTransform: "unset",
-    display: "flex",
-    "&:hover": {
-      background: "none",
-      boxShadow: "none",
-      color: "white",
-      transition: "all .15s ease-in-out",
-    },
-    "& i": {
-      fontSize: "1.2rem",
-      marginRight: "8px",
-      paddingBottom: "8px",
-    },
-  },
+
   ControlsContainer: {
     height: "100%",
     display: "flex",
@@ -285,65 +268,58 @@ class NewPaletteForm extends Component {
     const isPaletteFull = this.state.colors.length >= maxColors;
     return (
       <div className={classes.root}>
-        <Link to="/">
-          <Button
-            className={classes.header}
-            variant="contained"
-            color="secondary"
-            disableRipple
-          >
-            <i class="fas fa-chevron-left"></i>All Palettes
-          </Button>
-        </Link>
-        <Paper className={classes.container} elevation={10}>
-          <DraggableColorList
-            colors={this.state.colors}
-            removeColor={this.removeColor}
-            axis="x"
-            lockAxis="x"
-            onSortEnd={this.onSortEnd}
-          />
-          <div className={classes.ControlsContainer}>
-            <div className={classes.colorControls}>
-              <div className={classes.HeaderContainer}>
-                <h1>Create a Palette</h1>
-                <h2>Drag to arrange colors.</h2>
-              </div>
-              <ColorPicker
-                colors={this.state.colors}
-                isPaletteFull={isPaletteFull}
-                addColor={this.addColor}
-              />
-              <div className={classes.buttonGroup}>
-                <div className={classes.colorButtons}>
-                  <Button
-                    className={classes.randBtn}
-                    variant="contained"
-                    color="primary"
-                    onClick={this.addRandColor}
-                    disabled={isPaletteFull}
-                  >
-                    Random Color
-                  </Button>
-                  <Button
-                    className={classes.clearBtn}
-                    variant="outlined"
-                    color="secondary"
-                    onClick={this.clearPalette}
-                  >
-                    Clear Palette
-                  </Button>
+        <Navbar location="newPalette" />
+        <div className={classes.main}>
+          <Paper className={classes.container} elevation={10}>
+            <DraggableColorList
+              colors={this.state.colors}
+              removeColor={this.removeColor}
+              axis="x"
+              lockAxis="x"
+              onSortEnd={this.onSortEnd}
+            />
+            <div className={classes.ControlsContainer}>
+              <div className={classes.colorControls}>
+                <div className={classes.HeaderContainer}>
+                  <h1>Create a Palette</h1>
+                  <h2>Drag to arrange colors.</h2>
                 </div>
-                <PaletteSaveForm
-                  palettes={palettes}
+                <ColorPicker
                   colors={this.state.colors}
-                  minColors={minColors}
-                  handleSubmit={this.handleSubmit}
+                  isPaletteFull={isPaletteFull}
+                  addColor={this.addColor}
                 />
+                <div className={classes.buttonGroup}>
+                  <div className={classes.colorButtons}>
+                    <Button
+                      className={classes.randBtn}
+                      variant="contained"
+                      color="primary"
+                      onClick={this.addRandColor}
+                      disabled={isPaletteFull}
+                    >
+                      Random Color
+                    </Button>
+                    <Button
+                      className={classes.clearBtn}
+                      variant="outlined"
+                      color="secondary"
+                      onClick={this.clearPalette}
+                    >
+                      Clear Palette
+                    </Button>
+                  </div>
+                  <PaletteSaveForm
+                    palettes={palettes}
+                    colors={this.state.colors}
+                    minColors={minColors}
+                    handleSubmit={this.handleSubmit}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </Paper>
+          </Paper>
+        </div>
       </div>
     );
   }

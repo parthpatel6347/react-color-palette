@@ -13,6 +13,7 @@ import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import sizes from "./styles/sizes";
+import Navbar from "./Navbar";
 
 const styles = {
   root: {
@@ -21,18 +22,20 @@ const styles = {
     height: "100vh",
     overflow: "hidden",
     display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    flexDirection: "column",
+  },
+  main: {
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
-  },
-  header: {
-    position: "fixed",
-    display: "inline",
-    left: "0",
-    top: "0",
+    height: "100%",
+    width: "100%",
   },
   container: {
     width: "70%",
-    height: "75%",
+    height: "80%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -254,78 +257,78 @@ class Palette extends Component {
     ));
     return (
       <div className={classes.root}>
-        <Link to="/">
-          <h1 className={classes.header}>colorPalettes</h1>
-        </Link>
-        <Paper className={classes.container} elevation={10}>
-          <div className={classes.colorsContainer}>{colorBoxes}</div>
+        <Navbar />
+        <div className={classes.main}>
+          <Paper className={classes.container} elevation={10}>
+            <div className={classes.colorsContainer}>{colorBoxes}</div>
 
-          <div className={classes.sidePanel}>
-            <div className={classes.paletteName}>
-              <h1>{paletteName}</h1>
-            </div>
-            <div className={classes.adjustments}>
-              <div className={classes.sliders}>
-                <p>Lightness</p>
-                <CustomSlider
-                  className={classes.slider}
-                  value={this.state.lightness}
-                  onChange={this.changeLightness}
-                  min={-100}
-                  max={100}
-                  aria-labelledby="continuous-slider"
-                  track={false}
-                  valueLabelDisplay="auto"
-                />
-                <p>Saturation</p>
-                <CustomSlider
-                  value={this.state.saturation}
-                  onChange={this.changeSaturation}
-                  min={-100}
-                  max={100}
-                  aria-labelledby="continuous-slider"
-                  track={false}
-                  valueLabelDisplay="auto"
-                />
+            <div className={classes.sidePanel}>
+              <div className={classes.paletteName}>
+                <h1>{paletteName}</h1>
               </div>
-              <div className={classes.radio}>
-                <FormControl component="fieldset">
-                  <RadioGroup
-                    aria-label="copy format"
-                    name="format"
-                    value={this.state.format}
-                    onChange={this.changeFormat}
-                  >
-                    <FormControlLabel
-                      classes={{
-                        label: classes.label,
-                      }}
-                      value="hex"
-                      control={<CustomRadio size="small" />}
-                      label="HEX"
-                    />
-                    <FormControlLabel
-                      classes={{
-                        label: classes.label,
-                      }}
-                      value="rgb"
-                      control={<CustomRadio size="small" />}
-                      label="RGB"
-                    />
-                    <FormControlLabel
-                      classes={{
-                        label: classes.label,
-                      }}
-                      value="css"
-                      control={<CustomRadio size="small" />}
-                      label="CSS"
-                    />
-                  </RadioGroup>
-                </FormControl>
+              <div className={classes.adjustments}>
+                <div className={classes.sliders}>
+                  <p>Lightness</p>
+                  <CustomSlider
+                    className={classes.slider}
+                    value={this.state.lightness}
+                    onChange={this.changeLightness}
+                    min={-100}
+                    max={100}
+                    aria-labelledby="continuous-slider"
+                    track={false}
+                    valueLabelDisplay="auto"
+                  />
+                  <p>Saturation</p>
+                  <CustomSlider
+                    value={this.state.saturation}
+                    onChange={this.changeSaturation}
+                    min={-100}
+                    max={100}
+                    aria-labelledby="continuous-slider"
+                    track={false}
+                    valueLabelDisplay="auto"
+                  />
+                </div>
+                <div className={classes.radio}>
+                  <FormControl component="fieldset">
+                    <RadioGroup
+                      aria-label="copy format"
+                      name="format"
+                      value={this.state.format}
+                      onChange={this.changeFormat}
+                    >
+                      <FormControlLabel
+                        classes={{
+                          label: classes.label,
+                        }}
+                        value="hex"
+                        control={<CustomRadio size="small" />}
+                        label="HEX"
+                      />
+                      <FormControlLabel
+                        classes={{
+                          label: classes.label,
+                        }}
+                        value="rgb"
+                        control={<CustomRadio size="small" />}
+                        label="RGB"
+                      />
+                      <FormControlLabel
+                        classes={{
+                          label: classes.label,
+                        }}
+                        value="css"
+                        control={<CustomRadio size="small" />}
+                        label="CSS"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </div>
               </div>
             </div>
-          </div>
-        </Paper>
+          </Paper>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import Navbar from "./Navbar";
 import NewPaletteForm from "./NewPaletteForm";
 import Palette from "./Palette";
 import PaletteList from "./PaletteList";
@@ -61,11 +62,14 @@ class App extends Component {
           exact
           path="/"
           render={(routeProps) => (
-            <PaletteList
-              palettes={this.state.palettes}
-              deletePalette={this.deletePalette}
-              {...routeProps}
-            />
+            <div>
+              <Navbar location="home" />
+              <PaletteList
+                palettes={this.state.palettes}
+                deletePalette={this.deletePalette}
+                {...routeProps}
+              />
+            </div>
           )}
         />
         <Route
