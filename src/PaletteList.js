@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/core/styles";
 import sizes from "./styles/sizes";
+import Navbar from "./Navbar";
 
 const styles = {
   root: {
     backgroundColor: "#323232",
     height: "100vh",
     display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    flexDirection: "column",
   },
   container: {
     width: "50%",
@@ -34,28 +35,20 @@ const styles = {
       width: "60%",
     },
   },
-  nav: {
-    display: "flex",
-    width: "100%",
-    justifyContent: "space-between",
-    color: "white",
-    alignItems: "center",
-    color: "white",
-    "& a": {
-      color: "white",
-    },
-  },
+
   palettes: {
     boxSizing: "border-box",
     width: "100%",
     display: "grid",
     gridTemplateColumns: "repeat(3,30%)",
-    gridGap: "5%",
+    gridGap: "2.5rem",
     [sizes.down("sm")]: {
       gridTemplateColumns: "repeat(2,45%)",
+      gridGap: "2rem",
     },
     [sizes.down("xxs")]: {
       gridTemplateColumns: "repeat(1,100%)",
+      gridGap: "1.8rem",
     },
   },
 };
@@ -69,11 +62,8 @@ class PaletteList extends Component {
 
     return (
       <div className={classes.root}>
+        <Navbar />
         <div className={classes.container}>
-          <nav className={classes.nav}>
-            <h1>colorPalette</h1>
-            <Link to="/palette/new">Create Palette</Link>
-          </nav>
           <div className={classes.palettes}>
             {palettes.map((palette) => (
               <MiniPalette

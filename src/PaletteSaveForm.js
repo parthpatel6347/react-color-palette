@@ -11,8 +11,7 @@ const styles = {
   main: {
     paddingBottom: "2rem",
     width: "100%",
-    display: "flex",
-    justifyContent: "center",
+    textAlign: "center",
     [sizes.down("sm")]: {
       paddingBottom: "1rem",
     },

@@ -8,6 +8,7 @@ import PaletteSaveForm from "./PaletteSaveForm";
 import ColorPicker from "./ColorPicker";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import sizes from "./styles/sizes";
 
 const styles = {
@@ -46,9 +47,28 @@ const styles = {
   },
   header: {
     position: "fixed",
+    color: "#979797",
     display: "inline",
-    left: "0",
-    top: "0",
+    left: "15px",
+    top: "15px",
+    background: "none",
+    boxShadow: "none",
+    height: "2rem",
+    fontFamily: "'Josefin Sans', sans-serif",
+    fontSize: "1.6rem",
+    textTransform: "unset",
+    display: "flex",
+    "&:hover": {
+      background: "none",
+      boxShadow: "none",
+      color: "white",
+      transition: "all .15s ease-in-out",
+    },
+    "& i": {
+      fontSize: "1.2rem",
+      marginRight: "8px",
+      paddingBottom: "8px",
+    },
   },
   ControlsContainer: {
     height: "100%",
@@ -74,21 +94,23 @@ const styles = {
     width: "100%",
     flexDirection: "column",
     alignItems: "center",
+    flex: "1",
     [sizes.down("sm")]: {
       flexDirection: "row",
       justifyContent: "space-evenly",
+      flex: "unset",
       // width: "70%",
       height: "100%",
     },
   },
   HeaderContainer: {
-    height: "20%",
+    // height: "20%",
     display: "flex",
     alignItems: "center",
+    flexDirection: "column",
     [sizes.down("sm")]: {
       width: "25%",
       height: "100%",
-      flexDirection: "column",
       padding: "0 1.5em 0",
     },
     [sizes.down("xs")]: {
@@ -97,6 +119,8 @@ const styles = {
     "& h1": {
       color: "#979797",
       fontWeight: "500",
+      margin: "1rem 0 .5rem",
+      textAlign: "center",
       [sizes.down("lg")]: {
         fontSize: "1.8rem",
       },
@@ -113,12 +137,11 @@ const styles = {
     },
     "& h2": {
       color: "#979797",
-      // [sizes.down("lg")]: {
-      //   fontSize: "1.8rem",
-      // },
-      // [sizes.down("md")]: {
-      //   fontSize: "1.6em",
-      // },
+      marginTop: "0em",
+      textAlign: "center",
+      fontSize: "1.2em",
+      fontWeight: "300",
+      marginBottom: "1.3rem",
       [sizes.down("sm")]: {
         marginTop: "0em",
         textAlign: "center",
@@ -128,7 +151,12 @@ const styles = {
     },
   },
   buttonGroup: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    flex: "1",
     [sizes.down("sm")]: {
+      flex: "unset",
       width: "35%",
       height: "100%",
       display: "flex",
@@ -142,13 +170,11 @@ const styles = {
     },
   },
   colorButtons: {
-    [sizes.down("sm")]: {
-      width: "100%",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-around",
-      alignItems: "center",
-    },
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
   randBtn: {
     marginTop: "1.5rem",
@@ -264,8 +290,9 @@ class NewPaletteForm extends Component {
             className={classes.header}
             variant="contained"
             color="secondary"
+            disableRipple
           >
-            Go Back
+            <i class="fas fa-chevron-left"></i>All Palettes
           </Button>
         </Link>
         <Paper className={classes.container} elevation={10}>

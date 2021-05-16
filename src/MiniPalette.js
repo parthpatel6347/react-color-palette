@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
 import Paper from "@material-ui/core/Paper";
+import sizes from "./styles/sizes";
 
 const styles = {
   root: {
@@ -67,6 +68,9 @@ const styles = {
       color: "#eb3d30",
       opacity: "1",
       transform: "scale(1.1)",
+    },
+    [sizes.down("sm")]: {
+      opacity: "1",
     },
   },
 };

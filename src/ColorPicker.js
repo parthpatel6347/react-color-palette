@@ -14,9 +14,9 @@ const styles = {
     borderRadius: "15px",
     overflow: "hidden",
     width: "100%",
-    height: "100%",
     border: "1px solid #323232",
     [sizes.down("sm")]: {
+      height: "100%",
       width: "50%",
     },
     [sizes.down("xs")]: {
