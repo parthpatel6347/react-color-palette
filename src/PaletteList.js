@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/core/styles";
 import sizes from "./styles/sizes";
-import Navbar from "./Navbar";
 
 const styles = {
   root: {
     backgroundColor: "#323232",
-    height: "100vh",
+    height: "calc(100vh - 88px);",
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
     flexDirection: "column",
     paddingTop: "2.5rem",
+    overflow: "scroll",
+    overflowX: "hidden",
   },
   container: {
     width: "50%",
@@ -56,6 +57,10 @@ const styles = {
 };
 
 class PaletteList extends Component {
+  constructor(props) {
+    super(props);
+    this.goToPalette = this.goToPalette.bind(this);
+  }
   goToPalette(id) {
     this.props.history.push(`/palette/${id}`);
   }
@@ -70,7 +75,7 @@ class PaletteList extends Component {
             {palettes.map((palette) => (
               <MiniPalette
                 {...palette}
-                handleClick={() => this.goToPalette(palette.id)}
+                handleClick={this.goToPalette}
                 handleDelete={this.props.deletePalette}
                 key={palette.id}
                 id={palette.id}

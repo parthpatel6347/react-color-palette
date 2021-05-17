@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
 import Paper from "@material-ui/core/Paper";
@@ -18,17 +18,6 @@ const styles = {
     "&:hover svg": { opacity: "0.7" },
     // boxShadow: " 10px 10px 30px #2b2b2b",
   },
-  // container: {
-  //   width: "70%",
-  //   height: "75%",
-  //   display: "flex",
-  //   justifyContent: "space-between",
-  //   alignItems: "center",
-  //   backgroundColor: "#424242",
-  //   borderRadius: "30px",
-  //   overflow: "hidden",
-  //   // boxShadow: " 20px 20px 60px #2b2b2b",
-  // },
   palette: {
     backgroundColor: "grey",
     height: "75%",
@@ -75,7 +64,7 @@ const styles = {
   },
 };
 
-class MiniPalette extends Component {
+class MiniPalette extends PureComponent {
   constructor(props) {
     super(props);
     this.deletePalette = this.deletePalette.bind(this);
@@ -87,7 +76,7 @@ class MiniPalette extends Component {
   }
 
   render() {
-    const { classes, paletteName, colors, handleClick } = this.props;
+    const { classes, paletteName, colors, handleClick, id } = this.props;
     const miniColorBox = colors.map((color) => (
       <div
         className={classes.miniColor}
@@ -96,7 +85,11 @@ class MiniPalette extends Component {
       />
     ));
     return (
-      <Paper className={classes.root} onClick={handleClick} elevation={4}>
+      <Paper
+        className={classes.root}
+        onClick={() => handleClick(id)}
+        elevation={4}
+      >
         <div className={classes.palette}>{miniColorBox}</div>
         <h5 className={classes.title}>
           <p className={classes.name}>{paletteName}</p>

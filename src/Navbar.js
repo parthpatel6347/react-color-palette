@@ -14,7 +14,7 @@ const styles = {
     color: "white",
     backgroundColor: "black",
     // marginBottom: "2.5rem",
-    height: "3rem",
+    height: "48px",
   },
   container: {
     display: "flex",
@@ -100,7 +100,7 @@ class Navbar extends Component {
                 color="secondary"
                 disableRipple
               >
-                <i class="fas fa-chevron-left"></i>All Palettes
+                <i className="fas fa-chevron-left"></i>All Palettes
               </Button>
             </Link>
           )}

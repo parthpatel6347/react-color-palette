@@ -5,6 +5,8 @@ import NewPaletteForm from "./NewPaletteForm";
 import Palette from "./Palette";
 import PaletteList from "./PaletteList";
 import seedColors from "./seedPalette";
+import PageTransition from "react-router-page-transition";
+import "./main.css";
 
 class App extends Component {
   constructor(props) {
@@ -46,40 +48,52 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route
-          exact
-          path="/palette/new"
-          render={(routeProps) => (
-            <NewPaletteForm
-              addPalette={this.addPalette}
-              {...routeProps}
-              palettes={this.state.palettes}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/"
-          render={(routeProps) => (
-            <div>
-              <Navbar location="home" />
-              <PaletteList
-                palettes={this.state.palettes}
-                deletePalette={this.deletePalette}
-                {...routeProps}
+      <Route
+        render={({ location }) => (
+          <PageTransition timeout={500}>
+            <Switch location={location}>
+              <Route
+                exact
+                path="/palette/new"
+                render={(routeProps) => (
+                  <div className="transition-item new-page">
+                    <NewPaletteForm
+                      addPalette={this.addPalette}
+                      {...routeProps}
+                      palettes={this.state.palettes}
+                    />
+                  </div>
+                )}
               />
-            </div>
-          )}
-        />
-        <Route
-          exact
-          path="/palette/:id"
-          render={(routeProps) => (
-            <Palette palette={this.findPalette(routeProps.match.params.id)} />
-          )}
-        />
-      </Switch>
+              <Route
+                exact
+                path="/"
+                render={(routeProps) => (
+                  <div className="transition-item list-page">
+                    <Navbar location="home" />
+                    <PaletteList
+                      palettes={this.state.palettes}
+                      deletePalette={this.deletePalette}
+                      {...routeProps}
+                    />
+                  </div>
+                )}
+              />
+              <Route
+                exact
+                path="/palette/:id"
+                render={(routeProps) => (
+                  <div className="transition-item detail-page">
+                    <Palette
+                      palette={this.findPalette(routeProps.match.params.id)}
+                    />
+                  </div>
+                )}
+              />
+            </Switch>
+          </PageTransition>
+        )}
+      />
     );
   }
 }

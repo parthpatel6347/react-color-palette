@@ -257,7 +257,7 @@ class Palette extends Component {
     ));
     return (
       <div className={classes.root}>
-        <Navbar />
+        <Navbar location="viewPalette" />
         <div className={classes.main}>
           <Paper className={classes.container} elevation={10}>
             <div className={classes.colorsContainer}>{colorBoxes}</div>
