@@ -1,0 +1,13 @@
+body {
+    background-color:#323232;
+}
+
+.route-wrapper {
+    position: relative;
+
+  }
+  
+  .route-wrapper > div {
+    position: absolute;
+    width: 100%;
+  }

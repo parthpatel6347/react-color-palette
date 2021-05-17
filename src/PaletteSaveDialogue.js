@@ -83,6 +83,7 @@ class PaletteSaveDialogue extends Component {
       newPaletteName: "",
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -101,8 +102,13 @@ class PaletteSaveDialogue extends Component {
     this.setState({ newPaletteName: evt.target.value });
   }
 
+  handleSubmit() {
+    this.props.handleSubmit(this.state.newPaletteName);
+    this.props.hideSaveDialogue();
+  }
+
   render() {
-    const { hideSaveDialogue, handleSubmit, classes } = this.props;
+    const { hideSaveDialogue, classes } = this.props;
     return (
       <Dialog
         classes={{ paper: classes.dialog, root: classes.root }}
@@ -115,7 +121,7 @@ class PaletteSaveDialogue extends Component {
         <DialogTitle classes={{ root: classes.title }} id="form-dialog-title">
           <h1>Save Pallete</h1>
         </DialogTitle>
-        <ValidatorForm onSubmit={() => handleSubmit(this.state.newPaletteName)}>
+        <ValidatorForm onSubmit={this.handleSubmit}>
           <DialogContent className={classes.inputContainer}>
             <DialogContentText classes={{ root: classes.content }}>
               Please enter a palette name.

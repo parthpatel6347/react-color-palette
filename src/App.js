@@ -5,8 +5,36 @@ import NewPaletteForm from "./NewPaletteForm";
 import Palette from "./Palette";
 import PaletteList from "./PaletteList";
 import seedColors from "./seedPalette";
-// import PageTransition from "react-router-page-transition";
-// import "./main.css";
+import "./App.css";
+
+import { spring, AnimatedSwitch } from "react-router-transition";
+
+function mapStyles(styles) {
+  return {
+    opacity: styles.opacity,
+  };
+}
+
+function bounce(val) {
+  return spring(val, {
+    stiffness: 90,
+    damping: 15,
+  });
+}
+
+const bounceTransition = {
+  atEnter: {
+    opacity: 0,
+  },
+
+  atLeave: {
+    opacity: bounce(0),
+  },
+
+  atActive: {
+    opacity: bounce(1),
+  },
+};
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +78,14 @@ class App extends Component {
     return (
       <Route
         render={({ location }) => (
-          <Switch location={location}>
+          <AnimatedSwitch
+            atEnter={bounceTransition.atEnter}
+            atLeave={bounceTransition.atLeave}
+            atActive={bounceTransition.atActive}
+            mapStyles={mapStyles}
+            className="route-wrapper"
+            location={location}
+          >
             <Route
               exact
               path="/palette/new"
@@ -85,7 +120,19 @@ class App extends Component {
                 />
               )}
             />
-          </Switch>
+            <Route
+              render={(routeProps) => (
+                <div>
+                  <Navbar location="home" />
+                  <PaletteList
+                    palettes={this.state.palettes}
+                    deletePalette={this.deletePalette}
+                    {...routeProps}
+                  />
+                </div>
+              )}
+            />
+          </AnimatedSwitch>
         )}
       />
     );
