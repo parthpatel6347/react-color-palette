@@ -277,6 +277,7 @@ class NewPaletteForm extends Component {
               axis="x"
               lockAxis="x"
               onSortEnd={this.onSortEnd}
+              distance={10}
             />
             <div className={classes.ControlsContainer}>
               <div className={classes.colorControls}>

@@ -64,7 +64,7 @@ const styles = {
   },
 };
 
-const CssTextField = withStyles({
+const CustomTextField = withStyles({
   root: {
     "& .MuiInput-underline:after": {
       borderBottomColor: "#0D66D0",
@@ -120,7 +120,7 @@ class PaletteSaveDialogue extends Component {
             <DialogContentText classes={{ root: classes.content }}>
               Please enter a palette name.
             </DialogContentText>
-            <CssTextField
+            <CustomTextField
               autoFocus
               fullWidth
               value={this.state.newPaletteName}

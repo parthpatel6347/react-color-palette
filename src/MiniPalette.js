@@ -67,16 +67,22 @@ const styles = {
 class MiniPalette extends PureComponent {
   constructor(props) {
     super(props);
-    this.deletePalette = this.deletePalette.bind(this);
+    this.handleDialogueOpen = this.handleDialogueOpen.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  deletePalette(e) {
+  handleDialogueOpen(e) {
     e.stopPropagation();
-    this.props.handleDelete(this.props.id);
+    this.props.openDeleteDialog(this.props.id);
+  }
+
+  handleClick() {
+    this.props.handleClick(this.props.id);
   }
 
   render() {
-    const { classes, paletteName, colors, handleClick, id } = this.props;
+    const { classes, paletteName, colors } = this.props;
+    console.log(paletteName);
     const miniColorBox = colors.map((color) => (
       <div
         className={classes.miniColor}
@@ -85,18 +91,14 @@ class MiniPalette extends PureComponent {
       />
     ));
     return (
-      <Paper
-        className={classes.root}
-        onClick={() => handleClick(id)}
-        elevation={4}
-      >
+      <Paper className={classes.root} onClick={this.handleClick} elevation={4}>
         <div className={classes.palette}>{miniColorBox}</div>
         <h5 className={classes.title}>
           <p className={classes.name}>{paletteName}</p>
           <DeleteOutlinedIcon
             className={classes.deleteIcon}
             style={{ transition: "all 0.2s ease-in-out" }}
-            onClick={this.deletePalette}
+            onClick={this.handleDialogueOpen}
           />
         </h5>
       </Paper>
