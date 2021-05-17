@@ -6,17 +6,20 @@ import sizes from "./styles/sizes";
 
 const styles = {
   colorScale: {
-    height: "inherit",
+    height: "100%",
     width: "100%",
     position: "absolute",
     bottom: "0",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",
+    overflow: "hidden",
+    zIndex: "2",
     [sizes.down("xs")]: {
       flexDirection: "row",
       height: "100%",
       zIndex: "2",
+      width: "100%",
     },
   },
 };
@@ -46,6 +49,7 @@ class ColorScale extends Component {
   }
 
   render() {
+    console.log("rendered");
     return (
       <div
         className={this.props.classes.colorScale}

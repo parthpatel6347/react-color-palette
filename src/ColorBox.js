@@ -4,6 +4,8 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import ColorScale from "./ColorScale";
 import { withStyles } from "@material-ui/core/styles";
 import sizes from "./styles/sizes";
+import Fade from "@material-ui/core/Fade";
+import ClickAwayListener from "react-click-away-listener";
 
 const styles = {
   root: {
@@ -109,16 +111,14 @@ const styles = {
     backgroundColor: "rgba(0, 0, 0, 0)",
     color: "rgba(2, 192, 2)",
   },
-  colorScale: {
-    height: "100%",
-    overflow: "hidden",
-    [sizes.down("xs")]: {
-      width: "100%",
-    },
-  },
   dynamicColor: {
     color: (props) =>
       chroma(props.background).get("lab.l") <= 60 ? "white" : "#4B4B4B",
+  },
+  iconsHide: {
+    opacity: "0",
+    transition: "opacity .1s",
+    "&:hover": { opacity: "0" },
   },
 };
 
@@ -131,37 +131,57 @@ class ColorBox extends Component {
     this.closeScale = this.closeScale.bind(this);
   }
   changeCopied() {
-    console.log("in function");
     this.setState({ copied: true }, () => {
       setTimeout(() => this.setState({ copied: false }), 1000);
     });
   }
 
-  openScale() {
+  openScale(e) {
+    e.stopPropagation();
     this.setState({ scaleOpen: true });
   }
 
   closeScale() {
-    this.setState({ scaleOpen: false });
+    if (this.state.scaleOpen === true) {
+      this.setState({ scaleOpen: false });
+    }
   }
 
   render() {
     const { background, name, classes } = this.props;
-    let colorScale = this.state.scaleOpen && (
-      <div className={classes.colorScale}>
-        <ColorScale
-          key={background}
-          color={background}
-          changeCopied={this.changeCopied}
-          closeScale={this.closeScale}
-          format={this.props.format}
-        />
-      </div>
-    );
+    // let colorScale = this.state.scaleOpen && (
+    //   <div className={classes.colorScale}>
+    //     <ColorScale
+    //       key={background}
+    //       color={background}
+    //       changeCopied={this.changeCopied}
+    //       closeScale={this.closeScale}
+    //       format={this.props.format}
+    //     />
+    //   </div>
+    // );
     return (
       <div className={classes.root} style={{ background }}>
-        {colorScale}
-        <div className={classes.mainContainer}>
+        <ClickAwayListener onClickAway={this.closeScale}>
+          <Fade in={this.state.scaleOpen} timeout={500}>
+            <div>
+              <ColorScale
+                key={background}
+                color={background}
+                changeCopied={this.changeCopied}
+                closeScale={this.closeScale}
+                format={this.props.format}
+                isOpen={this.state.scaleOpen}
+              />
+            </div>
+          </Fade>
+        </ClickAwayListener>
+
+        <div
+          className={`${this.state.openScale && classes.iconsHide} ${
+            classes.mainContainer
+          }`}
+        >
           <span className={classes.dynamicColor}>{name} </span>
           <CopyToClipboard text={name} onCopy={this.changeCopied}>
             <i

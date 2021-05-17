@@ -62,7 +62,6 @@ class PaletteSaveForm extends Component {
 
   hideSaveDialogue() {
     this.setState({ saveDialogueOpen: false });
-    console.log("closing");
   }
 
   handleClose() {
