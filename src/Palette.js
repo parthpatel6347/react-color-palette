@@ -171,6 +171,9 @@ const styles = {
     fontSize: "1em",
     fontFamily: "'Josefin Sans', sans-serif",
     letterSpacing: "0.08em",
+    "&:hover": {
+      color: "white",
+    },
   },
 };
 
