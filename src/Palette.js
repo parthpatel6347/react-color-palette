@@ -10,7 +10,6 @@ import Slider from "@material-ui/core/Slider";
 
 import Paper from "@material-ui/core/Paper";
 
-import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import sizes from "./styles/sizes";
 import Navbar from "./Navbar";
@@ -249,7 +248,7 @@ class Palette extends Component {
 
   render() {
     const { classes } = this.props;
-    const { colors, paletteName, id } = this.props.palette;
+    const { colors, paletteName } = this.props.palette;
     const colorBoxes = colors.map((color, i) => (
       <ColorBox
         key={i}

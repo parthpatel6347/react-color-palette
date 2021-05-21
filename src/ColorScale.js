@@ -49,7 +49,6 @@ class ColorScale extends Component {
   }
 
   render() {
-    console.log("rendered");
     return (
       <div
         className={this.props.classes.colorScale}
