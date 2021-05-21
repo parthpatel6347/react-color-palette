@@ -37,11 +37,11 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     "& span": {
-      marginTop: "10px",
-      fontSize: ".9em",
+      marginTop: "1rem",
+      fontSize: ".85rem",
       width: "70px",
       textAlign: "center",
-      fontWeight: "500",
+      fontWeight: "400",
       [sizes.down("md")]: {
         fontSize: ".8em",
       },
@@ -149,17 +149,6 @@ class ColorBox extends Component {
 
   render() {
     const { background, name, classes } = this.props;
-    // let colorScale = this.state.scaleOpen && (
-    //   <div className={classes.colorScale}>
-    //     <ColorScale
-    //       key={background}
-    //       color={background}
-    //       changeCopied={this.changeCopied}
-    //       closeScale={this.closeScale}
-    //       format={this.props.format}
-    //     />
-    //   </div>
-    // );
     return (
       <div className={classes.root} style={{ background }}>
         <ClickAwayListener onClickAway={this.closeScale}>
