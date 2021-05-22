@@ -16,7 +16,10 @@ const styles = {
     flexDirection: "column",
     height: "150px",
     "&:hover svg": { opacity: "0.7" },
-    // boxShadow: " 10px 10px 30px #2b2b2b",
+    boxShadow: " 10px 10px 20px #282828",
+    "&:hover": {
+      boxShadow: " 5px 5px 9px #232323",
+    },
   },
   palette: {
     backgroundColor: "grey",

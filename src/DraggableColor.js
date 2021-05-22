@@ -10,12 +10,18 @@ const styles = {
     height: "100%",
     flexGrow: "1",
     "&:hover": {
-      flexGrow: "1.3",
+      // flexGrow: "1.8",
       "& $colorName": {
         opacity: "1",
       },
       "& $deleteIcon": {
         opacity: "1",
+      },
+      "& i": {
+        opacity: ".4",
+        [sizes.down("xs")]: {
+          opacity: ".2",
+        },
       },
     },
     [sizes.down("xs")]: {
@@ -37,6 +43,16 @@ const styles = {
     [sizes.down("xs")]: {
       width: "40px",
     },
+    "& i": {
+      fontSize: "1.3rem",
+      marginBottom: ".9rem",
+      opacity: ".1",
+      [sizes.down("xs")]: {
+        marginBottom: "2rem",
+        opacity: ".2",
+        fontSize: "1rem",
+      },
+    },
   },
   colorName: {
     opacity: "0.75",
@@ -56,7 +72,7 @@ const styles = {
   deleteIcon: {
     opacity: "0",
     marginBottom: "20px",
-    transition: "all 0.2s ease-in-out",
+    // transition: "all 0.2s ease-in-out",
     fontSize: "1.4rem",
     cursor: "pointer",
     "&:hover": {
@@ -75,6 +91,7 @@ const DraggableColor = SortableElement((props) => {
   return (
     <div className={classes.colorBox} style={{ backgroundColor: color.color }}>
       <div className={classes.container}>
+        <i className="fas fa-arrows-alt-h"></i>
         <span className={classes.colorName}>{color.color}</span>
         <CloseIcon className={classes.deleteIcon} onClick={handleRemove} />
       </div>

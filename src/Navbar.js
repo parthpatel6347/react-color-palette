@@ -11,7 +11,6 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     color: "white",
-    color: "white",
     backgroundColor: "black",
     // marginBottom: "2.5rem",
     height: "48px",

@@ -123,10 +123,9 @@ class PaletteList extends Component {
 
     return (
       <div className={classes.root}>
-        {/* <Navbar /> */}
         <div className={classes.container}>
           <div className={classes.palettes}>
-            {palettes.map((palette, i) => (
+            {palettes.map((palette) => (
               <MiniPalette
                 {...palette}
                 handleClick={this.goToPalette}

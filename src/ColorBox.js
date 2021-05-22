@@ -19,7 +19,7 @@ const styles = {
     transition: "all .1s ease-in",
     "&:hover": {
       flexGrow: "2",
-      transition: "all .1s",
+      transition: "all .1s ease-in",
       "& $icons": {
         opacity: "0.6",
         [sizes.down("xs")]: {
@@ -36,12 +36,12 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    "& span": {
+    "& p": {
       marginTop: "1rem",
       fontSize: ".85rem",
       width: "70px",
       textAlign: "center",
-      fontWeight: "400",
+      fontWeight: "500",
       [sizes.down("md")]: {
         fontSize: ".8em",
       },
@@ -115,11 +115,6 @@ const styles = {
     color: (props) =>
       chroma(props.background).get("lab.l") <= 60 ? "white" : "#4B4B4B",
   },
-  iconsHide: {
-    opacity: "0",
-    transition: "opacity .1s",
-    "&:hover": { opacity: "0" },
-  },
 };
 
 class ColorBox extends Component {
@@ -149,6 +144,7 @@ class ColorBox extends Component {
 
   render() {
     const { background, name, classes } = this.props;
+    let newName = name.split("(").join(" (");
     return (
       <div className={classes.root} style={{ background }}>
         <ClickAwayListener onClickAway={this.closeScale}>
@@ -166,12 +162,8 @@ class ColorBox extends Component {
           </Fade>
         </ClickAwayListener>
 
-        <div
-          className={`${this.state.openScale && classes.iconsHide} ${
-            classes.mainContainer
-          }`}
-        >
-          <span className={classes.dynamicColor}>{name} </span>
+        <div className={classes.mainContainer}>
+          <p className={classes.dynamicColor}>{newName} </p>
           <CopyToClipboard text={name} onCopy={this.changeCopied}>
             <i
               className={`${classes.icons} fas fa-clone ${classes.dynamicColor}`}

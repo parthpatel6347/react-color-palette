@@ -109,6 +109,7 @@ class ColorPicker extends Component {
     return (
       <div className={classes.root}>
         <ChromePicker
+          disableAlpha
           className={classes.colorPicker}
           color={this.state.currentColor}
           onChange={this.changeCurrColor}
