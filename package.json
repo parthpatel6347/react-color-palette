@@ -24,6 +24,7 @@
     "react-scripts": "4.0.1",
     "react-sortable-hoc": "^2.0.0",
     "react-tooltip": "^4.2.19",
+    "react-transition-group": "^4.4.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

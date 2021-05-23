@@ -3,6 +3,8 @@ import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/core/styles";
 import sizes from "./styles/sizes";
 
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 import Dialog from "@material-ui/core/Dialog";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -16,6 +18,15 @@ import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
 
 const styles = {
+  "@global": {
+    ".fade-exit": {
+      opacity: 1,
+    },
+    ".fade-exit-active": {
+      opacity: 0,
+      transition: "opacity 300ms ease-out",
+    },
+  },
   root: {
     backgroundColor: "#323232",
     height: "calc(100vh - 88px);",
@@ -124,17 +135,19 @@ class PaletteList extends Component {
     return (
       <div className={classes.root}>
         <div className={classes.container}>
-          <div className={classes.palettes}>
+          <TransitionGroup className={classes.palettes}>
             {palettes.map((palette) => (
-              <MiniPalette
-                {...palette}
-                handleClick={this.goToPalette}
-                openDeleteDialog={this.openDialog}
-                key={palette.id}
-                id={palette.id}
-              />
+              <CSSTransition key={palette.id} classNames="fade" timeout={300}>
+                <MiniPalette
+                  {...palette}
+                  handleClick={this.goToPalette}
+                  openDeleteDialog={this.openDialog}
+                  key={palette.id}
+                  id={palette.id}
+                />
+              </CSSTransition>
             ))}
-          </div>
+          </TransitionGroup>
         </div>
         <Dialog
           classes={{ paper: classes.dialog }}
