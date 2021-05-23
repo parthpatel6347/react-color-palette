@@ -2,27 +2,7 @@ import React, { Component } from "react";
 import chroma from "chroma-js";
 import ColorScaleBox from "./ColorScaleBox";
 import { withStyles } from "@material-ui/core/styles";
-import sizes from "./styles/sizes";
-
-const styles = {
-  colorScale: {
-    height: "100%",
-    width: "100%",
-    position: "absolute",
-    bottom: "0",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    overflow: "hidden",
-    zIndex: "2",
-    [sizes.down("xs")]: {
-      flexDirection: "row",
-      height: "100%",
-      zIndex: "2",
-      width: "100%",
-    },
-  },
-};
+import styles from "./styles/ColorScaleStyles";
 
 class ColorScale extends Component {
   constructor(props) {
