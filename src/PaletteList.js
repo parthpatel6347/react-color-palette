@@ -86,7 +86,7 @@ const styles = {
     color: "#cccccc",
     paddingBottom: "5px",
 
-    "& h1": {
+    "& p": {
       fontFamily: "'Josefin Sans', sans-serif",
       fontSize: "1.3rem",
       fontWeight: "400",
@@ -159,7 +159,7 @@ class PaletteList extends Component {
             id="delete-dialog-title"
             classes={{ root: classes.title }}
           >
-            <h1>Confirm Delete?</h1>
+            <p>Confirm Delete?</p>
           </DialogTitle>
           <List>
             <ListItem
