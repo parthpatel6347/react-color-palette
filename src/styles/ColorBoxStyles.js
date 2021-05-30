@@ -55,7 +55,7 @@ const styles = {
     [sizes.down("xs")]: {
       height: "100%",
       flexDirection: "row",
-      // alignItems: "center",
+      alignItems: "center",
       justifyContent: "space-evenly",
     },
   },
@@ -111,6 +111,15 @@ const styles = {
   dynamicColor: {
     color: (props) =>
       chroma(props.background).get("lab.l") <= 60 ? "white" : "#4B4B4B",
+  },
+  iconsContainer: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-evenly",
   },
 };
 

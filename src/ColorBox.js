@@ -53,15 +53,18 @@ class ColorBox extends Component {
 
         <div className={classes.mainContainer}>
           <p className={classes.dynamicColor}>{newName} </p>
-          <CopyToClipboard text={name} onCopy={this.changeCopied}>
+
+          <div className={classes.iconsContainer}>
+            <CopyToClipboard text={name} onCopy={this.changeCopied}>
+              <i
+                className={`${classes.icons} fas fa-clone ${classes.dynamicColor}`}
+              ></i>
+            </CopyToClipboard>
             <i
-              className={`${classes.icons} fas fa-clone ${classes.dynamicColor}`}
+              className={`${classes.icons} fas fa-palette ${classes.dynamicColor}`}
+              onClick={this.openScale}
             ></i>
-          </CopyToClipboard>
-          <i
-            className={`${classes.icons} fas fa-palette ${classes.dynamicColor}`}
-            onClick={this.openScale}
-          ></i>
+          </div>
         </div>
         <div
           className={`${classes.copiedMsg} ${
