@@ -14,11 +14,19 @@ const styles = {
     "&:hover": {
       flexGrow: "2",
       transition: "all .1s ease-in",
+      [sizes.down("xs")]: {
+        flexGrow: "none",
+      },
       "& $icons": {
         opacity: "0.6",
         [sizes.down("xs")]: {
           opacity: ".7",
         },
+      },
+    },
+    "&:active": {
+      [sizes.down("xs")]: {
+        flexGrow: "2",
       },
     },
     [sizes.down("xs")]: {
