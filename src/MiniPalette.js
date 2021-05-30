@@ -16,8 +16,9 @@ class MiniPalette extends PureComponent {
     this.props.openDeleteDialog(this.props.id);
   }
 
-  handleClick() {
+  handleClick(e) {
     this.props.handleClick(this.props.id);
+    e.stopPropagation();
   }
 
   render() {
