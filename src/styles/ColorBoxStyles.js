@@ -55,7 +55,7 @@ const styles = {
     [sizes.down("xs")]: {
       height: "100%",
       flexDirection: "row",
-      alignItems: "center",
+      // alignItems: "center",
       justifyContent: "space-evenly",
     },
   },
