@@ -27,12 +27,15 @@ const styles = {
     "&:hover": {
       flexGrow: "1.5",
       transition: "all .1s",
+      [sizes.down("xs")]: {
+        flexGrow: "1",
+      },
     },
     "&:hover p": {
       opacity: "1",
       position: "relative",
       [sizes.down("xs")]: {
-        opacity: "0",
+        display: "none",
       },
     },
   },

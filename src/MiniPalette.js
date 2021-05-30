@@ -31,12 +31,7 @@ class MiniPalette extends PureComponent {
       />
     ));
     return (
-      <Paper
-        className={classes.root}
-        onMouseUp={this.handleClick}
-        onTouch={this.handleClick}
-        elevation={4}
-      >
+      <Paper className={classes.root} onClick={this.handleClick} elevation={4}>
         <div className={classes.palette}>{miniColorBox}</div>
         <h5 className={classes.title}>
           <p className={classes.name}>{paletteName}</p>
