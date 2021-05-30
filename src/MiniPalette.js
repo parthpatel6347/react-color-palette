@@ -33,6 +33,7 @@ class MiniPalette extends PureComponent {
     return (
       <Paper
         className={classes.root}
+        onMouseUp={this.handleClick}
         onTouchEnd={this.handleClick}
         elevation={4}
       >
