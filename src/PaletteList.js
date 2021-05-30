@@ -27,9 +27,8 @@ class PaletteList extends Component {
     this.openDialog = this.openDialog.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
   }
-  goToPalette(id, e) {
+  goToPalette(id) {
     this.props.history.push(`/palette/${id}`);
-    e.stopPropagation();
   }
   openDialog(id) {
     this.setState({ deleteDialogShowing: true, deletingId: id });
