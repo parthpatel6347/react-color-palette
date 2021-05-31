@@ -14,6 +14,7 @@ class ColorBox extends Component {
     this.openScale = this.openScale.bind(this);
     this.closeScale = this.closeScale.bind(this);
   }
+
   changeCopied() {
     this.setState({ copied: true }, () => {
       setTimeout(() => this.setState({ copied: false }), 1000);

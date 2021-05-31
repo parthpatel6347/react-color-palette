@@ -14,9 +14,6 @@ const styles = {
     "&:hover": {
       flexGrow: "2",
       transition: "all .1s ease-in",
-      [sizes.down("xs")]: {
-        flexGrow: "2",
-      },
       "& $icons": {
         opacity: "0.6",
         [sizes.down("xs")]: {

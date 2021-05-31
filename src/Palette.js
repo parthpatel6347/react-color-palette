@@ -15,10 +15,21 @@ import { styles, CustomSlider, CustomRadio } from "./styles/PaletteStyles";
 class Palette extends Component {
   constructor(props) {
     super(props);
-    this.state = { lightness: 0, saturation: 0, format: "hex" };
+    this.state = {
+      lightness: 0,
+      saturation: 0,
+      format: "hex",
+      pageLoaded: false,
+    };
     this.changeLightness = this.changeLightness.bind(this);
     this.changeSaturation = this.changeSaturation.bind(this);
     this.changeFormat = this.changeFormat.bind(this);
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ pageLoaded: true });
+    }, 1000);
   }
 
   changeLightness(event, lightness) {
@@ -56,7 +67,7 @@ class Palette extends Component {
       />
     ));
     return (
-      <div className={classes.root}>
+      <div className={this.state.pageLoaded ? classes.root : classes.rootInit}>
         <Navbar location="viewPalette" />
         <div className={classes.main}>
           <Paper className={classes.container} elevation={10}>

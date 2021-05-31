@@ -17,6 +17,10 @@ const styles = {
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
+    [sizes.down("xs")]: {
+      alignItems: "flex-start",
+      paddingTop: "40px",
+    },
   },
   container: {
     width: "70%",

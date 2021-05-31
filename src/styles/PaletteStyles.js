@@ -14,12 +14,27 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
   },
+  rootInit: {
+    pointerEvents: "none",
+    fontFamily: "'Josefin Sans', sans-serif",
+    backgroundColor: "#323232",
+    height: "100vh",
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    flexDirection: "column",
+  },
   main: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     height: "100%",
     width: "100%",
+    [sizes.down("xs")]: {
+      alignItems: "flex-start",
+      paddingTop: "40px",
+    },
   },
   container: {
     width: "70%",

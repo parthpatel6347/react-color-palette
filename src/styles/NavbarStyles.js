@@ -8,10 +8,11 @@ const styles = {
     color: "white",
     backgroundColor: "black",
     // marginBottom: "2.5rem",
-    height: "48px",
+    height: "48px !important",
   },
   container: {
     display: "flex",
+    height: "48px !important",
     justifyContent: "space-between",
     alignItems: "center",
     width: (props) => (props.location === "home" ? "50%" : "70%"),
@@ -47,7 +48,7 @@ const styles = {
       width: (props) => (props.location === "home" ? "80%" : "85%"),
     },
     [sizes.down("xs")]: {
-      width: (props) => (props.location === "home" ? "85%" : "85%"),
+      width: "85%",
     },
     [sizes.down("xxs")]: {
       width: (props) => (props.location === "home" ? "90%" : "90%"),
