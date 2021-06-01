@@ -12,4 +12,14 @@ export default {
     };
     return `@media (max-width: ${sizes[size]})`;
   },
+
+  heightDown(size) {
+    const sizes = {
+      lg: "850px",
+      md: "720px",
+      sm: "620px",
+      xs: "",
+    };
+    return `@media(max-height:${sizes[size]})`;
+  },
 };

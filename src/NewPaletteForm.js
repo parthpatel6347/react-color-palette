@@ -19,12 +19,14 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       colors: [{ color: chroma.random().hex() }],
+      isSorting: false,
     };
     this.addColor = this.addColor.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeColor = this.removeColor.bind(this);
     this.clearPalette = this.clearPalette.bind(this);
     this.addRandColor = this.addRandColor.bind(this);
+    this.sortStart = this.sortStart.bind(this);
   }
 
   addColor(newColor) {
@@ -49,9 +51,14 @@ class NewPaletteForm extends Component {
     });
   }
 
+  sortStart() {
+    this.setState({ isSorting: true });
+  }
+
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState(({ colors }) => ({
       colors: arrayMove(colors, oldIndex, newIndex),
+      isSorting: false,
     }));
   };
 
@@ -73,12 +80,14 @@ class NewPaletteForm extends Component {
         <div className={classes.main}>
           <Paper className={classes.container} elevation={10}>
             <DraggableColorList
+              onSortStart={this.sortStart}
               colors={this.state.colors}
               removeColor={this.removeColor}
               axis="x"
               lockAxis="x"
               onSortEnd={this.onSortEnd}
               distance={10}
+              isSorting={this.state.isSorting}
             />
             <div className={classes.ControlsContainer}>
               <div className={classes.colorControls}>

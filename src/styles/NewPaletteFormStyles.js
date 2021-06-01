@@ -44,6 +44,12 @@ const styles = {
       flexDirection: "column",
       height: "80%",
     },
+    [sizes.heightDown("lg")]: {
+      height: "90%",
+    },
+    [sizes.heightDown("md")]: {
+      height: "95%",
+    },
     // boxShadow: " 20px 20px 60px #2b2b2b",
   },
 
@@ -111,6 +117,9 @@ const styles = {
       [sizes.down("s")]: {
         fontSize: "1.7rem",
       },
+      [sizes.heightDown("md")]: {
+        fontSize: "1.6rem",
+      },
     },
     "& h2": {
       color: "#979797",
@@ -124,6 +133,9 @@ const styles = {
         textAlign: "center",
         fontSize: "1.2em",
         fontWeight: "300",
+      },
+      [sizes.heightDown("md")]: {
+        fontSize: "1.1rem",
       },
     },
   },

@@ -11,7 +11,7 @@ const styles = {
         opacity: "1",
       },
       "& $deleteIcon": {
-        opacity: "1",
+        opacity: 1,
       },
       "& i": {
         opacity: ".4",
@@ -51,6 +51,8 @@ const styles = {
     },
   },
   colorName: {
+    width: "75px",
+    textAlign: "center",
     opacity: "0.75",
     marginBottom: "10px",
     fontSize: "0.9em",
@@ -60,6 +62,7 @@ const styles = {
       cursor: "default",
     },
     [sizes.down("xs")]: {
+      width: "unset",
       fontSize: "0.8em",
       transform: "rotate(-90deg)",
       marginBottom: "30px",
@@ -78,6 +81,12 @@ const styles = {
       opacity: ".7",
       marginBottom: "10px",
       fontSize: "1rem",
+    },
+  },
+  deleteIconHide: {
+    opacity: "0 !important",
+    [sizes.down("xs")]: {
+      opacity: "1 !important",
     },
   },
 };

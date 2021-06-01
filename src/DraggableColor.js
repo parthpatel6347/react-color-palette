@@ -5,13 +5,18 @@ import CloseIcon from "@material-ui/icons/Close";
 import styles from "./styles/DraggableColorStyles";
 
 const DraggableColor = SortableElement((props) => {
-  const { classes, handleRemove, color } = props;
+  const { classes, handleRemove, color, isSorting } = props;
   return (
     <div className={classes.colorBox} style={{ backgroundColor: color.color }}>
       <div className={classes.container}>
         <i className="fas fa-arrows-alt-h"></i>
         <span className={classes.colorName}>{color.color}</span>
-        <CloseIcon className={classes.deleteIcon} onClick={handleRemove} />
+        <CloseIcon
+          className={`${classes.deleteIcon} ${
+            isSorting ? classes.deleteIconHide : undefined
+          }`}
+          onClick={handleRemove}
+        />
       </div>
     </div>
   );

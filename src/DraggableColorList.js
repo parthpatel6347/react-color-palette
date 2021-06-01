@@ -17,7 +17,7 @@ const styles = {
 };
 
 const DraggableColorList = SortableContainer((props) => {
-  const { colors, removeColor, classes } = props;
+  const { colors, removeColor, classes, isSorting } = props;
   return (
     <div className={classes.root}>
       {colors.map((color, i) => (
@@ -26,6 +26,7 @@ const DraggableColorList = SortableContainer((props) => {
           index={i}
           color={color}
           handleRemove={() => removeColor(color.color)}
+          isSorting={isSorting}
         />
       ))}
     </div>

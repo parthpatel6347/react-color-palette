@@ -110,13 +110,18 @@ const styles = {
       chroma(props.background).get("lab.l") <= 60 ? "white" : "#4B4B4B",
   },
   iconsContainer: {
-    position: "absolute",
-    bottom: 0,
-    width: "100%",
-    height: "100%",
     display: "flex",
+    flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-evenly",
+    [sizes.down("xs")]: {
+      flexDirection: "row",
+      position: "absolute",
+      bottom: 0,
+      width: "100%",
+      height: "100%",
+      alignItems: "center",
+      justifyContent: "space-evenly",
+    },
   },
 };
 

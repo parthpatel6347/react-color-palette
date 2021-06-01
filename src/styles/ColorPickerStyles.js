@@ -17,6 +17,10 @@ const styles = {
       width: "50%",
       height: "95%",
     },
+    [sizes.heightDown("md")]: {
+      height: "240px",
+      width: "80% ",
+    },
   },
   colorPicker: {
     width: "100% !important",
@@ -48,6 +52,12 @@ const styles = {
       letterSpacing: "0.06rem",
       fontWeight: "600",
       height: "15%",
+    },
+    [sizes.heightDown("md")]: {
+      height: "30%",
+      fontSize: ".7rem",
+      alignItems: "center",
+      padding: 0,
     },
   },
   icon: {
