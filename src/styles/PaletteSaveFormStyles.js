@@ -4,6 +4,7 @@ const styles = {
   main: {
     paddingBottom: "2rem",
     display: "flex",
+    justifyContent: "center",
     width: "100%",
     textAlign: "center",
     [sizes.down("sm")]: {

@@ -53,7 +53,7 @@ class App extends Component {
 
   addPalette(newPalette) {
     this.setState(
-      { palettes: [...this.state.palettes, newPalette] },
+      { palettes: [newPalette, ...this.state.palettes] },
       this.syncLocalStorage
     );
   }
