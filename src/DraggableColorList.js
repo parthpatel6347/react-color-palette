@@ -6,6 +6,7 @@ import sizes from "./styles/sizes";
 
 const styles = {
   root: {
+    cursor: (props) => (props.isSorting ? "grabbing" : "grab"),
     display: "flex",
     width: "70%",
     height: "100%",
