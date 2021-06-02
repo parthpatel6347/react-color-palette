@@ -3,6 +3,7 @@ import sizes from "./sizes";
 const styles = {
   main: {
     paddingBottom: "2rem",
+    display: "flex",
     width: "100%",
     textAlign: "center",
     [sizes.down("sm")]: {

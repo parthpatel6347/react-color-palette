@@ -61,6 +61,12 @@ const styles = {
     [sizes.down("xs")]: {
       height: "80%",
     },
+    [sizes.heightDown("lg")]: {
+      height: "90%",
+    },
+    [sizes.heightDown("md")]: {
+      height: "95%",
+    },
   },
   colorsContainer: {
     height: "100%",
@@ -104,6 +110,9 @@ const styles = {
     [sizes.down("sm")]: {
       width: "40%",
     },
+    [sizes.heightDown("sm")]: {
+      height: "30%",
+    },
     "& h1": {
       // display: "block",
       overflow: "hidden",
@@ -124,6 +133,9 @@ const styles = {
       },
       [sizes.down("xs")]: {
         fontSize: "20px",
+      },
+      [sizes.heightDown("md")]: {
+        fontSize: "1.3rem",
       },
     },
   },
@@ -146,6 +158,9 @@ const styles = {
       alignItems: "center",
       height: "100%",
       width: "80%",
+    },
+    [sizes.heightDown("sm")]: {
+      height: "70%",
     },
   },
   sliders: {
