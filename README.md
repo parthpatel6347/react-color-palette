@@ -14,6 +14,8 @@ Any palette that you create will appear on this page. You may delete palettes fr
 
 ![homepage](./public/readmeImgs/HomeDesktop.PNG)
 
+![homepage](./public/readmeImgs/HomeMobile.PNG)
+
 ### Palette page
 
 - Adjust Lightness & Saturation.
