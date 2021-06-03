@@ -14,7 +14,7 @@ Any palette that you create will appear on this page. You may delete palettes fr
 
 ![homepage](./public/readmeImgs/HomeDesktop.PNG)
 
-![homepage-mobile](./public/readmeImgs/HomeMobile.PNG)
+![homepage mobile](./public/readmeImgs/HomeMobile.PNG)
 
 ### Palette page
 
@@ -24,6 +24,8 @@ Any palette that you create will appear on this page. You may delete palettes fr
 - Hover over any color and click on the palette icon to access more shades of that color. From this hover over any shade and click on its color code to copy it.
 
 ![pallete](./public/readmeImgs/paletteDesktop.gif)
+
+![pallete mobile](./public/readmeImgs/paletteMobile.gif)
 
 ### New Palette page
 
@@ -36,3 +38,7 @@ Any palette that you create will appear on this page. You may delete palettes fr
   - Prevents adding the same color again.
   - Prevents saving an empty palette.
   - Requires palette name to be unique.
+
+![new pallete](./public/readmeImgs/newDesktop.gif)
+
+![new pallete mobile](./public/readmeImgs/newMobile.gif)
