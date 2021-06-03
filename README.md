@@ -41,4 +41,4 @@ Any palette that you create will appear on this page. You may delete palettes fr
 
 ![new pallete](./public/readmeImgs/newDesktop.gif)
 
-![new pallete mobile](./public/readmeImgs/newMobile.gif)
+![new pallete mobile](./public/readmeImgs/NewMobile.gif)
