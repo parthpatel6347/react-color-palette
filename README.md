@@ -12,6 +12,8 @@ Create and save beautiful color palettes.
 
 Any palette that you create will appear on this page. You may delete palettes from here, or click on any palette to go to that individual palette page.
 
+![homepage](./public/readmeImgs/HomeDesktop.PNG)
+
 ### Palette page
 
 - Adjust Lightness & Saturation.
