@@ -2,6 +2,7 @@ import sizes from "./sizes";
 
 const styles = {
   root: {
+    touchAction: "none",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",

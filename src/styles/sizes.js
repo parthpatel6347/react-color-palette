@@ -15,8 +15,9 @@ export default {
 
   heightDown(size) {
     const sizes = {
-      lg: "850px",
-      md: "720px",
+      lg: "900px",
+      l: "770px",
+      md: "663px",
       sm: "620px",
       xs: "",
     };

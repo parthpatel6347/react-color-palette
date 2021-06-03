@@ -45,10 +45,13 @@ const styles = {
       height: "80%",
     },
     [sizes.heightDown("lg")]: {
-      height: "90%",
+      height: "82%",
     },
     [sizes.heightDown("md")]: {
       height: "95%",
+    },
+    "@media (min-width:500px ) and (max-height:800px)": {
+      height: "90%",
     },
     // boxShadow: " 20px 20px 60px #2b2b2b",
   },
@@ -154,6 +157,10 @@ const styles = {
       alignItems: "center",
     },
     [sizes.down("s")]: {
+      width: "20%",
+      padding: "0 1.5rem",
+    },
+    [sizes.down("xs")]: {
       width: "20%",
       padding: "0 1.5rem",
     },
