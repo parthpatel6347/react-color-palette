@@ -14,7 +14,7 @@ Any palette that you create will appear on this page. You may delete palettes fr
 
 ![homepage](./public/readmeImgs/HomeDesktop.PNG)
 
-![homepage](./public/readmeImgs/HomeMobile.PNG)
+![homepage-mobile](./public/readmeImgs/HomeMobile.PNG)
 
 ### Palette page
 
@@ -22,6 +22,8 @@ Any palette that you create will appear on this page. You may delete palettes fr
 - Choose color code format - HEX | RGB | CSS
 - Hover over any color and click on the copy icon to copy the color code.
 - Hover over any color and click on the palette icon to access more shades of that color. From this hover over any shade and click on its color code to copy it.
+
+![pallete](./public/readmeImgs/paletteDesktop.gif)
 
 ### New Palette page
 
