@@ -37,6 +37,7 @@ const styles = {
     },
   },
   container: {
+    touchAction: "none",
     width: "70%",
     height: "80%",
     display: "flex",
@@ -61,11 +62,14 @@ const styles = {
     [sizes.down("xs")]: {
       height: "80%",
     },
-    [sizes.heightDown("lg")]: {
-      height: "90%",
-    },
+    // [sizes.heightDown("lg")]: {
+    //   height: "90%",
+    // },
     [sizes.heightDown("md")]: {
       height: "95%",
+    },
+    "@media (min-width:500px ) and (max-height:800px)": {
+      height: "90%",
     },
   },
   colorsContainer: {
