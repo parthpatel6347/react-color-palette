@@ -4,7 +4,7 @@
 
 Create and save beautiful color palettes.
 
-[Go to website](https://parth-react-color.herokuapp.com/)
+[Go to website](https://parthpatel6347.github.io/react-color-palette/)
 
 ## Overview :
 
